@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import { useState } from "react";
 
-function Navbar() {
+function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -28,5 +28,4 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
+export default NavBar;

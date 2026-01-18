@@ -1,4 +1,4 @@
-import Navbar from "./NavBar";
+import NavBar  from "./NavBar";
 import Home from "./Home";
 import About from "./About";
 import Projects from "./Projects";
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Home />
       <About />
       <Projects />
