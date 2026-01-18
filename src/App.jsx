@@ -1,4 +1,4 @@
-import NavBar  from "./NavBar";
+import NavBar  from "./NavBar.jsx";
 import Home from "./Home.jsx";
 import About from "./About.jsx";
 import Projects from "./Projects.jsx";
