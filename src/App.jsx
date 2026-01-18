@@ -1,10 +1,10 @@
-import NavBar  from "./NavBar";
-import Home from "./Home";
-import About from "./About";
-import Projects from "./Projects";
-import Journey from "./Journey";
-import Think from "./Think";  
-import Contact from "./Contact";
+import NavBar  from "./NavBar.jsx";
+import Home from "./Home.jsx";
+import About from "./About.jsx";
+import Projects from "./Projects.jsx";
+import Journey from "./Journey.jsx";
+import Think from "./Think.jsx";  
+import Contact from "./Contact.jsx";
 
 function App() {
 
