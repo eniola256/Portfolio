@@ -7,7 +7,6 @@ import Think from "./Think.jsx";
 import Contact from "./Contact.jsx";
 
 function App() {
-
   return (
     <>
       <NavBar />
