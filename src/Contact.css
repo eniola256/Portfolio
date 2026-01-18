@@ -36,7 +36,7 @@
 
 .contact-head p {
   font-size: 16px;
-  font-style: italic;
+  font-style: normal;
   color: #706f6f;
   max-width: 600px; /* limits width for better readability */
   margin: 0 auto;
