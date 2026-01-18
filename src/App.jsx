@@ -1,4 +1,4 @@
-import NavBar  from "./NavBar.jsx";
+import Navbar  from "./Navbar.jsx";
 import Home from "./Home.jsx";
 import About from "./About.jsx";
 import Projects from "./Projects.jsx";
@@ -9,7 +9,7 @@ import Contact from "./Contact.jsx";
 function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <Home />
       <About />
       <Projects />
