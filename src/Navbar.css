@@ -1,0 +1,83 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 20px;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: grey;
+}
+
+.nav-items {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+
+.nav-items a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: grey;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s;
+}
+
+.nav-items a:hover::after {
+  width: 100%;
+}
+
+/* Hide toggle on desktop */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-items {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    padding: 20px 0;
+
+    transform: translateY(-200%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-items.open {
+    transform: translateY(0);
+  }
+}

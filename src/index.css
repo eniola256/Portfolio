@@ -1,0 +1,28 @@
+*{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffff;
+  font-weight: 400;
+  padding: 20px 10px;
+}
+h2{
+  font-style: italic;
+}
+.section {
+  max-height: 100vh;         /* full screen */
+  padding: 50px 20px 40px;  /* top padding = navbar height + 20px */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0 20px;
+    height: auto;
+  }
+}

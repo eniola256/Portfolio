@@ -1,0 +1,134 @@
+#Think{
+    padding: 70px 70px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100vh;
+}
+.think-head{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    gap: 3px;
+}
+
+.think-head h2 {
+  font-weight: 400;
+  font-size: 38px;
+  position: relative;
+  display: inline-block;
+  text-align: right;
+}
+
+.think-head h2::after {
+  content: "";
+  position: absolute;
+  right: 0;              /* Stick underline to the right */
+  bottom: 0;
+  width: 32%;           /* Control underline length */
+  height:  3px;
+  background-color: #4d4c4c;
+}
+.think-head p{
+  font-style: italic;
+  color:#706f6f ;
+}
+.think-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.think-box {
+  border: 1px solid #c9c9c9;
+  border-radius: 14px;
+  padding: 25px 20px;
+  text-align: left;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.think-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.think-icon {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.think-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.think-box p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  #Think {
+    padding: 50px 40px 10px;
+    height: auto;
+  }
+
+  .think-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .think-head h2 {
+    font-size: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  #Think {
+    padding: 40px 20px 10px;
+    margin-bottom: 500px;
+    height: 100%;
+  }
+
+  .think-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .think-head {
+    text-align: center;
+  }
+
+  .think-head h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .think-head h2::after {
+    left: 30%;
+    right: auto;
+    width: 40%;
+  }
+
+  .think-box {
+    padding: 20px 16px;
+  }
+
+  .think-icon {
+    font-size: 28px;
+  }
+
+  .think-box h3 {
+    font-size: 16px;
+  }
+
+  .think-box p {
+    font-size: 14px;
+  }
+}

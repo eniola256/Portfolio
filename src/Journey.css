@@ -1,0 +1,177 @@
+#Journey{
+  padding: 70px ;
+  margin-bottom: 250px;
+  
+}
+.journey-head{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 10px;
+}
+
+.journey-head h2{
+  font-weight: 420;
+  font-size: 38px;
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+}
+.journey-head h2::after {
+  content: "";
+  position: absolute;
+  left: 0;              /* Stick underline to the right */
+  bottom: 0;
+  width: 19%;           /* Control underline length */
+  height:  3px;
+  background-color: #4d4c4c;
+}
+
+.journey-head p{
+    font-style: italic;
+    color:#706f6f ;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-left: 40px;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 45px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #9c9c9c;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 25px;
+  position: relative;
+/* ← Adds vertical breathing room */
+  align-items: start;
+}
+
+/* Dots */
+.timeline-dot{
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  padding: 4px 0;
+}
+.td {
+  padding: 6px;
+  background-color: #000;
+  border-radius: 50%;
+  
+}
+
+/* Text content */
+.timeline-content h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.timeline-content{
+  width: 100%;
+}
+
+.timeline-box {
+  border: 1px solid #c9c9c9;
+  border-radius: 12px;
+  width: 100%;
+  padding: 15px;
+}
+
+.timeline-box h4 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  font-weight: 400;
+}
+
+.timeline-box p {
+  font-size: 16px;
+  color: #4d4c4c;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  #Journey {
+    padding: 50px 40px;
+    margin-bottom: 120px;
+  }
+
+  .journey-head h2 {
+    font-size: 32px;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    left: 35px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  #Journey {
+    padding: 40px 20px;
+    margin-bottom: 50px;
+  }
+  .journey-head {
+    text-align: center;
+  }
+  .journey-head h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .journey-head h2::after {
+    width: 35%;
+    left: 32%;
+  }
+
+  .timeline {
+    padding-left: 20px;
+    gap: 30px;
+  }
+
+  .timeline::before {
+    left: 22px;
+  }
+
+  .timeline-item {
+    gap: 15px;
+  }
+
+  .td {
+    padding: 5px;
+  }
+
+  .timeline-content h3 {
+    font-size: 17px;
+  }
+
+  .timeline-box {
+    padding: 12px;
+  }
+
+  .timeline-box h4 {
+    font-size: 16px;
+  }
+
+  .timeline-box p {
+    font-size: 14px;
+  }
+}

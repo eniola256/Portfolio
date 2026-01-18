@@ -1,0 +1,119 @@
+/* ============================ */
+/* Contact Section Styling       */
+/* ============================ */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers everything horizontally */
+  justify-content: center;
+  text-align: center; /* aligns headings and paragraphs */
+  padding: 70px 20px;
+  gap: 30px;
+  background-color: #f9f9f9; /* optional light background */
+  min-height: 70vh;
+}
+
+.contact-head h2 {
+  font-size: 38px;
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Underline below heading */
+.contact-head h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 25%;
+  height: 3px;
+  background-color: #4d4c4c;
+}
+
+.contact-head p {
+  font-size: 16px;
+  font-style: italic;
+  color: #706f6f;
+  max-width: 600px; /* limits width for better readability */
+  margin: 0 auto;
+}
+
+/* Contact buttons container */
+.contact-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* centers buttons horizontally */
+  margin-top: 20px;
+}
+
+/* Individual buttons */
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid #c9c9c9;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.contact-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon inside button */
+.contact-btn .material-symbols-outlined {
+  font-size: 22px;
+  color: #333;
+}
+
+/* ============================ */
+/* Responsive adjustments       */
+/* ============================ */
+@media (max-width: 768px) {
+  .contact-btns {
+    gap: 15px;
+  }
+
+  .contact-btn {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+
+  .contact-btn .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-head h2 {
+    font-size: 28px;
+  }
+
+  .contact-head p {
+    font-size: 14px;
+  }
+
+  .contact-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-btn {
+    width: 80%; /* buttons span most of screen */
+    justify-content: center;
+  }
+}
