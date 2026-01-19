@@ -1,6 +1,6 @@
 #Projects{
     padding: 60px 70px 70px;
-    height: 100vh;
+    height: 100%;
 }
 .project-head{
   display: flex;
@@ -87,13 +87,30 @@
   color: #4d4c4c;
 
 }
+@media (max-width: 2000px) {
+  #Projects {
+    padding: 30px 40px;
+    height: auto;
+  }
+}
+@media (max-width: 900px) {
+  #Projects {
+    padding: 50px 40px 70px;
+    height: auto; /* Remove fixed height */
+    margin-bottom: 530px;
+  }
+  .projects-list {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 25px;
+  }
+}
 
 
 @media (max-width: 768px) {
   #Projects {
     padding: 0 20px ;
     height: 100%; /* Remove fixed height */
-    margin-bottom: 450px;
+    margin-bottom: 170px;
   }
 
   .project-head h2 {
@@ -136,4 +153,15 @@
     font-size: 15px;
     line-height: 1.4;
   }
+}
+
+
+@media (max-width: 500px) {
+  #Projects {
+    padding: 0 16px ;
+    height: 100%; /* Remove fixed height */
+    margin-bottom: 300px;
+  }
+
+  
 }

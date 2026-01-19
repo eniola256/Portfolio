@@ -74,6 +74,13 @@
   line-height: 1.6;
 }
 
+@media (max-width: 2500px) {
+    #Think {
+        padding: 20px 50px 10px;
+        height: auto;
+    }
+}
+
 @media (max-width: 900px) {
   #Think {
     padding: 50px 40px 10px;

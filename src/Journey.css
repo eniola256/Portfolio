@@ -1,7 +1,7 @@
 #Journey{
   padding: 70px ;
   margin-bottom: 250px;
-  
+  height: 100%;
 }
 .journey-head{
   display: flex;
@@ -104,10 +104,17 @@
   margin: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 2500px) {
   #Journey {
-    padding: 50px 40px;
-    margin-bottom: 120px;
+    padding: 30px 80px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 2000px) {
+  #Journey {
+    padding: 30px 40px;
+    margin-bottom: 10px;
   }
 
   .journey-head h2 {
@@ -123,11 +130,31 @@
   }
 }
 
-/* Mobile */
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   #Journey {
-    padding: 40px 20px;
-    margin-bottom: 50px;
+    padding: 40px 30px;
+    margin-bottom: 10px;
+  }
+
+  .journey-head h2 {
+    font-size: 28px;
+  }
+
+  .timeline {
+    padding-left: 25px;
+    gap: 35px;
+  }
+
+  .timeline::before {
+    left: 27px;
+  }
+}
+/* Mobile */
+@media (max-width: 570px) {
+  #Journey {
+    padding: 20px 20px;
+    margin-bottom: 30px;
+    
   }
   .journey-head {
     text-align: center;
