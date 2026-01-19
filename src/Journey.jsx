@@ -3,6 +3,7 @@ import "./Journey.css";
 function Journey() {
   return (
     <section id="Journey" className="section">
+      <div className="journey-section">
   <div className="journey-head">
     <h2>My Journey</h2>
     <p>From a curious learner to a passionate developer</p>
@@ -69,7 +70,7 @@ function Journey() {
         </div>
       </div>
     </div>
-
+    </div>
   </div>
 </section>
 

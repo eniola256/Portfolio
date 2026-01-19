@@ -1,10 +1,10 @@
-#Think{
-    padding: 70px 70px 10px;
+.think-section{
+    padding: 10px 70px 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 .think-head{
     display: flex;
@@ -38,7 +38,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 .think-box {
@@ -74,33 +74,26 @@
   line-height: 1.6;
 }
 
-@media (max-width: 2500px) {
-    #Think {
-        padding: 20px 50px 10px;
-        height: auto;
-    }
-}
+
 
 @media (max-width: 900px) {
-  #Think {
-    padding: 50px 40px 10px;
+  .think-section {
+    padding: 20px 50px 10px;
     height: auto;
   }
 
   .think-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .think-head h2 {
     font-size: 32px;
   }
 }
 
 /* Mobile */
-@media (max-width: 500px) {
-  #Think {
-    padding: 40px 20px 10px;
-    margin-bottom: 500px;
+@media (max-width: 530px) {
+  .think-section {
+    padding: 20px 40px 10px;
     height: 100%;
   }
 
@@ -138,11 +131,4 @@
   .think-box p {
     font-size: 14px;
   }
-}
-
-@media (max-width: 430px) {
-    #Think {
-        margin-top: 680px;
-        margin-bottom: 830px;
-    }
 }

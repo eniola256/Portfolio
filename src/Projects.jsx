@@ -3,7 +3,8 @@ import "./Project.css";
 function Projects() {
   return (
   <>
-<section id="Projects" className="section">
+<section id="Projects" className="section project-section">
+  <div className="project-section">
   <div className="project-head">
     <h2>My Projects</h2>
     <p>The projects that helped me grow as a developer</p>
@@ -55,7 +56,7 @@ function Projects() {
         </p>
       </div>
     </div>
-
+    </div>
   </div>
 </section>
   </>

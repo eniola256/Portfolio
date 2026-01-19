@@ -2,7 +2,8 @@ import "./Contact.css";
 
 function Contact() {
     return(
-     <section id="Contact" className="section contact-section">
+     <section id="Contact" className="section ">
+      <div className="contact-section">
       <div className="contact-head">
         <h2>Contact Me</h2>
         <p>I'm always open to discussing new projects, opportunities, or just chatting about frontend development. Feel free to reach out.</p>
@@ -28,7 +29,7 @@ function Contact() {
     WhatsApp
   </a>
 </div>
-
+</div>
     </section>
     );
 }

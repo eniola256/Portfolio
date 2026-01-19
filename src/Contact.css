@@ -9,7 +9,6 @@
   text-align: center; /* aligns headings and paragraphs */
   padding: 70px 20px;
   gap: 10px;
-  margin-top: 200px;
   background-color: #f9f9f9; /* optional light background */
   height: 100%;
 }
@@ -79,14 +78,13 @@
     .contact-section {
         padding: 30px 20px;
         height: 100%;
-        margin-top: 30px;
     }
 }
 @media (max-width: 768px) {
 
    .contact-section{
         padding: 10px 30px;
-        margin-top: 30px;
+
     }
 
   .contact-btns {
@@ -106,7 +104,6 @@
 @media (max-width: 480px) {
     .contact-section{
         padding: 10px 30px;
-        margin-top: 40px;
     }
   .contact-head h2 {
     font-size: 48px;

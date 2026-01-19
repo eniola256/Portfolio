@@ -4,6 +4,7 @@ function Think() {
   return (
     <>
     <section id="Think" className="section">
+      <div className="think-section">
   <div className="think-head">
     <h2>My Thought Process</h2>
     <p>I'm always open to discussing new projects, creative ideas</p>
@@ -58,7 +59,7 @@ function Think() {
         I value communication and feedback. Working closely with people helps me understand their vision and turn it into reality.
       </p>
     </div>
-
+    </div>
   </div>
 </section>
 
