@@ -162,6 +162,16 @@
     height: 100%; /* Remove fixed height */
     margin-bottom: 300px;
   }
-
-  
 }
+
+@media (max-width: 430px) {
+  #Projects {
+    padding: 0 16px ;
+    height: 100%; /* Remove fixed height */
+    margin-bottom: 550px;
+
+}
+.project-head p{
+  text-align: center;
+}
+}  

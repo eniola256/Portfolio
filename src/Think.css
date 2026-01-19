@@ -139,3 +139,10 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 430px) {
+    #Think {
+        margin-top: 680px;
+        margin-bottom: 830px;
+    }
+}

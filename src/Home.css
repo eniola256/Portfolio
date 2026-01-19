@@ -118,10 +118,11 @@
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   #home {
-    padding: 0 16px;
+    padding: 90px 16px 10px;
     gap: 14px;
+    width: 100%;
   }
 
   .home-section h1 {
@@ -142,8 +143,8 @@
   }
 
   .home-btn {
-    flex-direction: column; /* stack buttons */
     gap: 10px;
+    width: 90%;
   }
 
   .home-section button {

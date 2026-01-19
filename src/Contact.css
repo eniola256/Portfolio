@@ -8,7 +8,7 @@
   justify-content: center;
   text-align: center; /* aligns headings and paragraphs */
   padding: 70px 20px;
-  gap: 30px;
+  gap: 10px;
   margin-top: 200px;
   background-color: #f9f9f9; /* optional light background */
   height: 100%;
@@ -24,16 +24,7 @@
 }
 
 /* Underline below heading */
-.contact-head h2::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  width: 25%;
-  height: 3px;
-  background-color: #4d4c4c;
-}
+
 
 .contact-head p {
   font-size: 16px;
@@ -84,10 +75,11 @@
 /* Responsive adjustments       */
 /* ============================ */
 
-@media (max-width: 1580px) {
+@media (max-width: 1350px) {
     .contact-section {
         padding: 30px 20px;
         height: 100%;
+        margin-top: 30px;
     }
 }
 @media (max-width: 768px) {
@@ -117,20 +109,11 @@
         margin-top: 40px;
     }
   .contact-head h2 {
-    font-size: 68px;
+    font-size: 48px;
   }
 
   .contact-head p {
     font-size: 14px;
   }
 
-  .contact-btns {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .contact-btn {
-    width: 80%; /* buttons span most of screen */
-    justify-content: center;
-  }
 }
