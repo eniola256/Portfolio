@@ -1,17 +1,29 @@
+import { useFadeInOnScroll } from "./UseFadeInOnScroll";
 import "./Journey.css";
 
 function Journey() {
+  const [headRef, headVisible] = useFadeInOnScroll();
+
+  const [ref1, v1] = useFadeInOnScroll();
+  const [ref2, v2] = useFadeInOnScroll();
+  const [ref3, v3] = useFadeInOnScroll();
+  const [ref4, v4] = useFadeInOnScroll();
+
   return (
     <section id="Journey" className="section">
       <div className="journey-section">
-  <div className="journey-head">
+  <div
+  ref={headRef}
+  className={`journey-head fade-in ${headVisible ? "show" : ""}`}
+>
+
     <h2>My Journey</h2>
     <p>From a curious learner to a passionate developer</p>
   </div>
 
   <div className="timeline">
 
-    <div className="timeline-item">
+    <div ref={ref1} className={`timeline-item fade-in ${v1 ? "show" : ""}`}>
       <div className="timeline-dot">
         <div className="td"></div>
       </div>
@@ -26,7 +38,7 @@ function Journey() {
       </div>
     </div>
 
-    <div className="timeline-item">
+    <div ref={ref2} className={`timeline-item fade-in ${v2 ? "show" : ""}`}>
       <div className="timeline-dot">
         <div className="td"></div>
       </div>
@@ -41,7 +53,7 @@ function Journey() {
       </div>
     </div>
 
-    <div className="timeline-item">
+    <div ref={ref3} className={`timeline-item fade-in ${v3 ? "show" : ""}`}>
       <div className="timeline-dot">
         <div className="td"></div>
       </div>
@@ -56,7 +68,7 @@ function Journey() {
       </div>
     </div>
 
-    <div className="timeline-item">
+    <div ref={ref4} className={`timeline-item fade-in ${v4 ? "show" : ""}`}>
       <div className="timeline-dot">
         <div className="td"></div>
       </div>

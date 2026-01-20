@@ -1,5 +1,5 @@
 .project-section{
-    padding: 20px 30px 10px;
+    padding: 70px 70px 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -92,7 +92,11 @@
   color: #4d4c4c;
 
 }
-
+@media (max-width: 1000px){
+    .projects-list{
+        flex-direction: column;
+    }
+}
 @media (max-width: 800px) {
   .project-section {
     padding: 10px 40px 70px;
@@ -128,7 +132,7 @@
   .project-head h2::after {
     left: 50%;
     transform: translateX(-50%);  /* Center underline */
-    width: 60%;  
+    width: 28%;  
   }
 
   .project-head p {
@@ -163,8 +167,60 @@
   }
 }
 
-@media (max-width: 768px) {
-    .project-section{
-        
-    }
+@media (max-width: 540px) {
+    .project-head h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+    .project-head h2::after {
+    left: 50%;
+    transform: translateX(-50%);  /* Center underline */
+    width: 41%;  
+  }
+}
+
+@media (max-width: 420px) {
+    .project-head h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+    .project-head h2::after {
+    left: 50%;
+    transform: translateX(-50%);  /* Center underline */
+    width: 58%;  
+  }
+}
+
+/* Base fade-in (hidden) */
+.project.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Visible state */
+.project.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional staggered delays */
+.project.fade-in.delay-1 { transition-delay: 0.2s; }
+.project.fade-in.delay-2 { transition-delay: 0.4s; }
+.project.fade-in.delay-3 { transition-delay: 0.6s; }
+
+.project-head.fade-in {
+  opacity: 0;
+  transform: translateY(25px); /* slightly below */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.project-head.fade-in.show {
+  opacity: 1;
+  transform: translateY(0); /* move to original spot */
+}
+
+/* optional small delay so it appears slightly before cards */
+.project-head.fade-in.delay-head {
+  transition-delay: 0.1s;
 }

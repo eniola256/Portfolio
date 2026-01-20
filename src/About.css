@@ -52,6 +52,13 @@
     border: 1px solid #706f6f;
 }
 
+@media (max-width: 970px){
+  .abt-section h2::after {
+    width: 23%;                   /* Bigger underline for mobile */
+  }
+
+}
+
 @media (max-width: 768px) {
   .abt-section {
     padding: 30px 20px 50px;    /* Less padding */
@@ -72,7 +79,7 @@
   .abt-section h2::after {
     left: 50%;
     transform: translateX(-50%);  /* Center underline */
-    width: 30%;                   /* Bigger underline for mobile */
+    width: 100%;                   /* Bigger underline for mobile */
   }
 
   .abt-p {
@@ -82,10 +89,27 @@
   }
 }
 
-@media (max-width: 480px) {
-  
-  }
+/* Fade-in base state */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
 
+/* When visible */
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.abt-section .fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.abt-section .fade-up.show {
+  animation: fadeUp 0.8s ease forwards;
+}
 
 
 

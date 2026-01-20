@@ -1,18 +1,31 @@
 import "./Think.css";
+import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
 
 function Think() {
+  const [headRef, headVisible] = useFadeInOnScroll();
+  const [ref1, v1] = useFadeInOnScroll();
+  const [ref2, v2] = useFadeInOnScroll();
+  const [ref3, v3] = useFadeInOnScroll();
+  const [ref4, v4] = useFadeInOnScroll();
+  const [ref5, v5] = useFadeInOnScroll();
+  const [ref6, v6] = useFadeInOnScroll();
+
   return (
     <>
     <section id="Think" className="section">
       <div className="think-section">
-  <div className="think-head">
+  <div
+  ref={headRef}
+  className={`think-head fade-in ${headVisible ? "show" : ""}`}
+>
     <h2>My Thought Process</h2>
     <p>I'm always open to discussing new projects, creative ideas</p>
   </div>
 
   <div className="think-grid">
 
-    <div className="think-box">
+    <div ref={ref1} className={`think-box fade-in ${v1 ? "show" : ""}`}>
+
       <span className="material-symbols-outlined think-icon">track_changes</span>
       <h3>Goal-Oriented</h3>
       <p>
@@ -20,7 +33,8 @@ function Think() {
       </p>
     </div>
 
-    <div className="think-box">
+    <div ref={ref2} className={`think-box fade-in ${v2 ? "show" : ""}`}>
+
       <span className="material-symbols-outlined think-icon">psychology</span>
       <h3>Problem-First Approach</h3>
       <p>
@@ -28,7 +42,8 @@ function Think() {
       </p>
     </div>
 
-    <div className="think-box">
+    <div ref={ref3} className={`think-box fade-in ${v3 ? "show" : ""}`}>
+
       <span className="material-symbols-outlined think-icon">bolt</span>
       <h3>Performance Minded</h3>
       <p>
@@ -36,7 +51,8 @@ function Think() {
       </p>
     </div>
 
-    <div className="think-box">
+    <div ref={ref4} className={`think-box fade-in ${v4 ? "show" : ""}`}>
+
       <span className="material-symbols-outlined think-icon">palette</span>
       <h3>User-Centered Design</h3>
       <p>
@@ -44,7 +60,8 @@ function Think() {
       </p>
     </div>
 
-    <div className="think-box">
+    <div ref={ref5} className={`think-box fade-in ${v5 ? "show" : ""}`}>
+
       <span className="material-symbols-outlined think-icon">build</span>
       <h3>Iterative Improvement</h3>
       <p>
@@ -52,7 +69,7 @@ function Think() {
       </p>
     </div>
 
-    <div className="think-box">
+    <div ref={ref6} className={`think-box fade-in ${v6 ? "show" : ""}`}>
       <span className="material-symbols-outlined think-icon">groups</span>
       <h3>Collaboration-Driven</h3>
       <p>
