@@ -1,0 +1,38 @@
+.tech-carousel {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  padding: 70px 0;
+}
+
+.carousel-wrapper {
+  display: flex;
+  gap: 65px;
+  /* scroll width = 1 set / total width */
+  animation: scroll 10s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-113%); /* move exactly 1 set width */
+  }
+}
+
+@media (max-width: 700px ) {
+  .carousel-wrapper {
+  display: flex;
+  gap: 65px;
+  /* scroll width = 1 set / total width */
+  animation: scroll 3s linear infinite;
+}
+}

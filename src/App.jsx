@@ -5,6 +5,7 @@ import Projects from "./Projects.jsx";
 import Journey from "./Journey.jsx";
 import Think from "./Think.jsx";  
 import Contact from "./Contact.jsx";
+import TechCarousel from "./carousel.jsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Home />
       <About />
       <Projects />
+      <TechCarousel />
       <Think />
       <Journey />
       <Contact />
