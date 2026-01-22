@@ -141,12 +141,12 @@
   }
 
   .timeline {
-    padding-left: 20px;
+    padding-left: -0px;
     gap: 30px;
   }
 
   .timeline::before {
-    left: 22px;
+    left: 4px;
   }
 
   .timeline-item {
