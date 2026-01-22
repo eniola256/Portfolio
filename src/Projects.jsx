@@ -37,7 +37,7 @@ function Projects() {
           </div>
           <div className="project-btn">
             <a href="https://spa-day-website.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
+            <a href="https://github.com/eniola256/Spa-day-Website" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ function Projects() {
           </div>
           <div className="project-btn">
             <a href="https://a-ecuts.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
+            <a href="https://github.com/eniola256/AEcuts" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ function Projects() {
           ref={ref3}
           className={`project fade-in ${isVisible3 ? "show delay-3" : ""}`}
         >
-          <img src="./" alt="Blog App in Progress" className="blog"/>
+          <img src="./" alt="Blog App Building still in Progress" className="blog"/>
           <div className="project-txt">
             <h3>Blog</h3>
             <p>
@@ -85,8 +85,8 @@ function Projects() {
             </p>
           </div>
           <div className="project-btn">
-            <a href="https://your-live-demo-link.com" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
-            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
+            <a href="#Projects" className="btn-primary">Live Demo</a>
+            <a href="#Projects" className="btn-secondary">GitHub</a>
           </div>
         </div>
       </div>
