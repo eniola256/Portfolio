@@ -15,7 +15,7 @@ function Navbar() {
         <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
         <a href="#About" onClick={() => setIsOpen(false)}>About Me</a>
         <a href="#Projects" onClick={() => setIsOpen(false)}>Projects</a>
-        <a href="#Contact" onClick={() => setIsOpen(false)}>Contact</a>
+        <a href="#Contact" onClick={() => setIsOpen(false)}>Lets Connect</a>
       </div>
 
       <div className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>

@@ -13,7 +13,7 @@ function Contact() {
           ref={headRef}
           className={`contact-head fade-in ${headVisible ? "show" : ""}`}
         >
-          <h2>Contact Me</h2>
+          <h2>Contact </h2>
           <p>
             I'm always open to discussing new projects, opportunities, or just chatting about frontend development. Feel free to reach out.
           </p>
