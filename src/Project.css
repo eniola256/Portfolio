@@ -143,7 +143,7 @@
 }
 @media (max-width: 800px) {
   .project-section {
-    padding: 10px 40px 70px;
+    padding: 10px 40px 30px;
     height: auto; /* Remove fixed height */
   }
   .projects-list {
@@ -163,7 +163,7 @@
 
 @media (max-width: 768px) {
   .project-section {
-    padding: 70px 20px ;
+    padding: 70px 20px 20px;
     height: 100%; /* Remove fixed height */
     
   }
