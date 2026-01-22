@@ -102,8 +102,8 @@
 }
 
 @media (max-width: 480px) {
-    .contact-section{
-        padding: 10px 30px;
+  .contact-section{
+    padding: 100px 30px 70px;
     }
   .contact-head h2 {
     font-size: 48px;

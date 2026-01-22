@@ -12,6 +12,9 @@
 .home-section h1 span{
     font-size: 80px ;
 }
+.home-section a{
+  text-decoration: none;
+}
 .top-par{
     color: #4d4c4c;
     font-size: 28px;

@@ -15,62 +15,82 @@ function Projects() {
         <h2>My Projects</h2>
         <p>The projects that helped me grow as a developer</p>
       </div>
-
       <div className="projects-list">
+        {/* Project 1 */}
         <div
           ref={ref1}
           className={`project fade-in ${isVisible1 ? "show delay-1" : ""}`}
         >
-          <img src="./project.jpg" alt="Todo App" />
+          <img src="./Spa.PNG" alt="Spa App" />
           <div className="project-txt">
-            <h3>Todo App</h3>
+            <h3>Spa App</h3>
             <p>
               <span>What it does:</span> <br />
-              A task manager that lets users create, edit, delete, and complete daily tasks.
+              A booking and management app for spa services where users can schedule
+              appointments, view available services, and manage their bookings.
             </p>
             <p>
               <span>What I learned building it:</span> <br />
-              State management, form handling, CRUD operations, and component structure.
+              Component structuring, form handling, state management, and UI layout
+              design.
             </p>
+          </div>
+          <div className="project-btn">
+            <a href="https://spa-day-website.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
+            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
           </div>
         </div>
 
+        {/* Project 2 */}
         <div
           ref={ref2}
           className={`project fade-in ${isVisible2 ? "show delay-2" : ""}`}
         >
-          <img src="./project.jpg" alt="Blog Platform" />
+          <img src="./barbing.PNG" alt="Barbing App" />
           <div className="project-txt">
-            <h3>Blog Platform</h3>
+            <h3>Barbing App</h3>
             <p>
               <span>What it does:</span> <br />
-              A platform for reading and publishing blog posts with smooth navigation.
+              A barbershop booking platform that allows users to view available barbers,
+              select services, and book appointments.
             </p>
             <p>
               <span>What I learned building it:</span> <br />
-              Routing, dynamic content rendering, and layout structuring.
+              Routing, conditional rendering, component reusability, and UI flow
+              planning.
             </p>
+          </div>
+          <div className="project-btn">
+            <a href="https://a-ecuts.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
+            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
           </div>
         </div>
 
+        {/* Project 3 */}
         <div
           ref={ref3}
           className={`project fade-in ${isVisible3 ? "show delay-3" : ""}`}
         >
-          <img src="./project.jpg" alt="E-commerce Store" />
+          <img src="./" alt="Blog App in Progress" className="blog"/>
           <div className="project-txt">
-            <h3>E-commerce</h3>
+            <h3>Blog</h3>
             <p>
               <span>What it does:</span> <br />
-              An online store where users can browse products and add them to a cart.
+              A blogging platform where users can read posts, publish articles, and
+              navigate through different categories. (My personal blog site)
             </p>
             <p>
               <span>What I learned building it:</span> <br />
-              UI structuring, shared state, and user flow design.
+              Dynamic routing, reusable components, content rendering, and layout structuring.
             </p>
+          </div>
+          <div className="project-btn">
+            <a href="https://your-live-demo-link.com" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
+            <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub</a>
           </div>
         </div>
       </div>
+
     </section>
   );
 }
