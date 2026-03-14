@@ -71,7 +71,7 @@ function Projects() {
           ref={ref3}
           className={`project fade-in ${isVisible3 ? "show delay-3" : ""}`}
         >
-          <img src="./" alt="Blog App Building still in Progress" className="blog"/>
+          <img src="./blog.PNG" alt="" className="blog"/>
           <div className="project-txt">
             <h3>Blog</h3>
             <p>
@@ -85,7 +85,7 @@ function Projects() {
             </p>
           </div>
           <div className="project-btn">
-            <a href="#Projects" className="btn-primary">Live Demo</a>
+            <a href="https://ae-tech-blog.vercel.app/" className="btn-primary">Live Demo</a>
             <a href="#Projects" className="btn-secondary">GitHub</a>
           </div>
         </div>

@@ -61,9 +61,7 @@
     height: 13rem;
     object-fit: cover;
 }
-.project img.blog{
-  padding: 95px 0;
-}
+
 .project-txt{
     padding: 5px 20px 20px ;
     display: flex;
