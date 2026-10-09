@@ -14,7 +14,7 @@ function Navbar() {
       <div className={`nav-items ${isOpen ? "open" : ""}`}>
         <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
         <a href="#About" onClick={() => setIsOpen(false)}>About Me</a>
-        <a href="#Projects" onClick={() => setIsOpen(false)}>Projects</a>
+        <a href="#Projects" onClick={() => setIsOpen(falses)}>Projects</a>
         <a href="#Contact" onClick={() => setIsOpen(false)}>Lets Connect</a>
       </div>
 
