@@ -61,8 +61,8 @@ function Projects() {
         ref={headRef}
         className={`project-head fade-in ${headVisible ? "show delay-head" : ""}`}
       >
-        <h2>My Projects</h2>
-        <p>The projects that helped me grow as a developer</p>
+        <p className="head">My Projects</p>
+        <h2 className="statement">The projects that helped me grow <br/> as a developer</h2>
       </div>
 
       <div className="projects-list">

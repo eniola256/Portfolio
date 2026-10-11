@@ -9,22 +9,6 @@
 /* ---------- heading: right side, caps like About ---------- */
 .project-head { text-align: right; }
 
-.project-head h2 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: #6e6e73;
-  font-style: normal;
-}
-.project-head p {
-  margin: 12px 0 0;
-  font-size: clamp(17px, 2vw, 22px);
-  font-style: italic;                 /* slanted */
-  color: #1d1d1f;                     /* near-black */
-}
 
 /* ---------- list ---------- */
 .projects-list {
@@ -133,7 +117,7 @@
   background: rgba(0, 0, 0, 0.05);
   font-size: 13px;
   font-weight: 500;
-  color: #1d1d1f;
+  color: var(--accent);
 }
 
 .project-btn {

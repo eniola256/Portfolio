@@ -88,9 +88,9 @@ function Think() {
           ref={headRef}
           className={`think-head fade-in ${headVisible ? "show" : ""}`}
         >
-          <h2>My Thought Process</h2>
-          <p>I'm always open to discussing new projects, creative ideas</p>
-        </div>
+          <p className="head">My Thought Process</p>
+          <h2 className="statement">I'm always open to discussing new projects, <br/> creative ideas</h2>
+        </div> 
 
         <div
           ref={stageRef}

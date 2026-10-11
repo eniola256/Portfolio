@@ -6,24 +6,9 @@
   width: 100%;
 }
 
-.abt-eyebrow {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #6e6e73;
-  padding-bottom: 10px;
-}
 
-.abt-statement {
-  margin: 0;
-  max-width: 20ch;
-  font-size: clamp(36px, 3vw, 72px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-  color: #1d1d1f;
-}
+
+
 
 /* ---------- zigzag ---------- */
 .abt-flow {

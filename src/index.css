@@ -11,7 +11,25 @@ body {
   font-weight: 400;
   padding: 20px 10px;
 }
-h2{
-  font-style: italic;
+:root {
+  --accent: #0066cc;
 }
 
+.statement {
+  margin: 0;
+  
+  font-size: clamp(20px, 2vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: #1d1d1f;
+  font-style: italic;
+}
+.head {
+  font-size: clamp(10px, 16px, 22px);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6e6e73;
+  padding-bottom: 10px;
+}

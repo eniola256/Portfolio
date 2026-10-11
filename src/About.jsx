@@ -84,8 +84,8 @@ function About() {
     return (
         <section id="About" className="section">
             <div ref={ref} className={`abt-section fade-in ${isVisible ? "show" : ""}`}>
-                <p className="abt-eyebrow">About Me</p>
-                <h2 className="abt-statement">More than just a frontend developer.</h2>
+                <p className="head">About Me</p>
+                <h2 className="statement">More than just a frontend developer.</h2>
 
                 <div ref={flowRef} className="abt-flow">
                     <svg

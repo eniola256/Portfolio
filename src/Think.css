@@ -1,7 +1,7 @@
 .think-section {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 50px 24px 100px;
+  padding: 70px 24px 100px;
   box-sizing: border-box;
   width: 100%;
 }
@@ -9,24 +9,6 @@
 /* ---------- heading: same style as About / Projects, on the left ---------- */
 .think-head { text-align: left; }
 
-.think-head h2 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: #6e6e73;
-  display: block;
-}
-.think-head h2::after { content: none; }      /* old underline removed */
-
-.think-head p {
-  margin: 12px 0 0;
-  font-size: clamp(17px, 2vw, 22px);
-  font-style: italic;
-  color: #1d1d1f;
-}
 
 /* ---------- carousel ---------- */
 .think-carousel {
@@ -43,6 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 20px;
 }
 
 /* the item: exit = fade out + slide down, enter = fade in + slide up */
@@ -81,7 +64,7 @@
 .think-dots {
   display: flex;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 10px;
 }
 .think-dot {
   position: relative;
@@ -100,7 +83,7 @@
   inset: -10px;
 }
 .think-dot.active {
-  background: #1d1d1f;
+  background: var(--accent);
   box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.18);
 }
 
