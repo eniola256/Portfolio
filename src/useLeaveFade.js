@@ -2,8 +2,13 @@ import { useEffect } from "react";
 
 /**
  * Fades + nudges each section as it scrolls out of the top of the viewport.
- * ids: section ids to affect
- * start: fraction of the viewport height over which the fade happens
+ * Progress is based on scroll distance, so short sections (e.g. Home on a
+ * phone) are always fully visible at scroll position 0.
+ *
+ * ids:    section ids to affect
+ * start:  fraction of the viewport height over which the fade happens
+ * shift:  extra upward drift in px
+ * shrink: scale reduction at the end of the fade
  */
 export default function useLeaveFade(
   ids,
@@ -13,6 +18,7 @@ export default function useLeaveFade(
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    let zones = []; // [{ el, fadeStart, docBottom }]
     let ticking = false;
 
     const reset = (el) => {
@@ -21,15 +27,34 @@ export default function useLeaveFade(
       el.style.transformOrigin = "";
     };
 
-    const update = () => {
+    /* Measure where each section really sits, ignoring any fade transform. */
+    const measure = () => {
       const vh = window.innerHeight;
-      els.forEach((el) => {
-        const bottom = el.getBoundingClientRect().bottom;
-        // 1 = fully visible, 0 = just left the screen
-        const t = Math.min(1, Math.max(0, bottom / (vh * start)));
+      const scrollY = window.scrollY;
+
+      els.forEach(reset); // clean layout positions
+
+      zones = els.map((el) => {
+        const docBottom = el.getBoundingClientRect().bottom + scrollY;
+        // fade begins `start` viewports before the section ends,
+        // but never before the page has actually been scrolled
+        const fadeStart = Math.max(0, docBottom - vh * start);
+        return { el, fadeStart, docBottom };
+      });
+
+      update();
+    };
+
+    const update = () => {
+      const scrollY = window.scrollY;
+
+      zones.forEach(({ el, fadeStart, docBottom }) => {
+        const span = Math.max(1, docBottom - fadeStart);
+        const p = Math.min(1, Math.max(0, (scrollY - fadeStart) / span));
+        const t = 1 - p; // 1 = fully visible, 0 = fully faded
 
         if (t >= 1) {
-          reset(el); // no leftover transforms while the section is in normal view
+          reset(el);
           return;
         }
 
@@ -40,6 +65,7 @@ export default function useLeaveFade(
           1 - (1 - e) * shrink
         })`;
       });
+
       ticking = false;
     };
 
@@ -51,12 +77,20 @@ export default function useLeaveFade(
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
+    window.addEventListener("resize", measure);
+    window.addEventListener("load", measure);
+
+    // re-measure when the page height changes (images, fonts, carousels)
+    const ro = new ResizeObserver(measure);
+    ro.observe(document.body);
+
+    measure();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("load", measure);
+      ro.disconnect();
       els.forEach(reset);
     };
   }, [ids, start, shift, shrink]);
