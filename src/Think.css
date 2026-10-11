@@ -1,146 +1,163 @@
-.think-section{
-    padding: 40px 70px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    height: 100%;
+.think-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 50px 24px 100px;
+  box-sizing: border-box;
+  width: 100%;
 }
-.think-head{
-    display: flex;
-    flex-direction: column;
-    text-align: end;
-    gap: 3px;
-}
+
+/* ---------- heading: same style as About / Projects, on the left ---------- */
+.think-head { text-align: left; }
 
 .think-head h2 {
-  font-weight: 400;
-  font-size: 38px;
-  position: relative;
-  display: inline-block;
-  text-align: right;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #6e6e73;
+  display: block;
 }
+.think-head h2::after { content: none; }      /* old underline removed */
 
-.think-head h2::after {
-  content: "";
-  position: absolute;
-  right: 0;              /* Stick underline to the right */
-  bottom: 0;
-  width: 32%;           /* Control underline length */
-  height:  3px;
-  background-color: #4d4c4c;
-}
-.think-head p{
+.think-head p {
+  margin: 12px 0 0;
+  font-size: clamp(17px, 2vw, 22px);
   font-style: italic;
-  color:#706f6f ;
-}
-.think-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  margin-top: 7px;
+  color: #1d1d1f;
 }
 
-.think-box {
-  border: 1px solid #c9c9c9;
-  border-radius: 14px;
-  padding: 25px 20px;
-  text-align: left;
-  transition: all 0.3s ease;
-  background: #fff;
+/* ---------- carousel ---------- */
+.think-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 56px;
 }
 
-.think-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+.think-stage {
+  width: 100%;
+  max-width: 620px;
+  min-height: 250px;                          /* stops the layout jumping between items */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* the item: exit = fade out + slide down, enter = fade in + slide up */
+.think-item {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.think-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .think-icon {
-  font-size: 32px;
-  color: #333;
-  margin-bottom: 15px;
   display: inline-block;
+  margin-bottom: 18px;
+  font-size: 40px;
+  color: #1d1d1f;
 }
-
-.think-box h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  font-weight: 600;
+.think-item h3 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
 }
-
-.think-box p {
-  font-size: 15px;
-  color: #555;
+.think-item p {
+  margin: 0;
+  font-size: 17px;
   line-height: 1.6;
+  color: #515154;
 }
 
+/* ---------- dots ---------- */
+.think-dots {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+.think-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.think-dot::after {                            /* bigger tap area */
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+.think-dot.active {
+  background: #1d1d1f;
+  box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.18);
+}
 
+/* ---------- previous / next buttons ---------- */
+.think-controls {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+.think-arrow {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1.5px solid #1d1d1f;
+  border-radius: 50%;
+  background: transparent;
+  color: #1d1d1f;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+.think-arrow .material-symbols-outlined { font-size: 22px; }
+.think-arrow:hover { background: #1d1d1f; color: #ffffff; }
+.think-arrow:active { transform: scale(0.94); }
+.think-arrow:focus-visible,
+.think-dot:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 3px;
+}
 
+/* ---------- responsive ---------- */
 @media (max-width: 900px) {
-  .think-section {
-    padding: 20px 50px 10px;
-    height: auto;
-  }
-
-  .think-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .think-head h2 {
-    font-size: 32px;
-  }
+  .think-section { padding: 40px 20px 80px; }
+  .think-carousel { margin-top: 44px; }
 }
 
-/* Mobile */
 @media (max-width: 530px) {
-  .think-section {
-    padding: 40px 20px 50px;
-    height: 100%;
-  }
-
-  .think-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .think-head {
-    text-align: center;
-  }
-
-  .think-head h2 {
-    font-size: 26px;
-    text-align: center;
-    margin-bottom: 5px;
-  }
-
-  .think-head h2::after {
-    left: 8%;
-    right: auto;
-    width: 85%;
-  }
-
-  .think-box {
-    padding: 20px 16px;
-  }
-
-  .think-icon {
-    font-size: 28px;
-  }
-
-  .think-box h3 {
-    font-size: 16px;
-  }
-
-  .think-box p {
-    font-size: 14px;
-  }
+  .think-section { padding: 32px 16px 64px; }
+  .think-carousel { margin-top: 36px; }
+  .think-stage { min-height: 290px; }
+  .think-icon { font-size: 34px; }
+  .think-item p { font-size: 16px; }
+  .think-dots { margin-top: 28px; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .think-item, .think-arrow, .think-dot { transition: none; }
+}
+
+/* keep these two rules, other sections use them */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-/* When visible */
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);

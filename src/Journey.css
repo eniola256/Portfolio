@@ -1,36 +1,42 @@
+/* ---------- Section ---------- */
 .journey-section {
-  padding: 30px 70px ;
-  height: 100%;
+  padding: 30px clamp(24px, 5vw, 70px);
 }
-.journey-head{
+
+/* ---------- Heading (same style as About / Projects, right side) ---------- */
+.journey-head {
   display: flex;
   flex-direction: column;
-  text-align: start;
-  gap: 10px;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0;
 }
 
-.journey-head h2{
-  font-weight: 420;
-  font-size: 38px;
+.journey-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: #6e6e73;
+  font-style: normal;
   position: relative;
   display: inline-block;
-  font-style: italic;
 }
+
 .journey-head h2::after {
-  content: "";
-  position: absolute;
-  left: 0;              /* Stick underline to the right */
-  bottom: 0;
-  width: 19%;           /* Control underline length */
-  height:  3px;
-  background-color: #4d4c4c;
+  content: none;
 }
 
-.journey-head p{
-    font-style: italic;
-    color:#706f6f ;
+.journey-head p {
+  margin: 12px 0 0;
+  font-size: clamp(17px, 2vw, 22px);
+  font-style: italic;
+  color: #1d1d1f;
 }
 
+/* ---------- Timeline ---------- */
 .timeline {
   position: relative;
   margin-top: 40px;
@@ -40,183 +46,190 @@
   padding-left: 40px;
 }
 
-/* Vertical line */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 45px;
   top: 0;
+  bottom: 0;
+  left: 45px;
   width: 1px;
-  height: 100%;
-  background-color: #9c9c9c;
+  background: #d2d2d7;
 }
 
 .timeline-item {
   display: flex;
   gap: 25px;
   position: relative;
-/* ← Adds vertical breathing room */
-  align-items: start;
+  align-items: flex-start;
 }
 
-/* Dots */
-.timeline-dot{
-  background-color: rgb(255, 255, 255);
+.timeline-dot {
+  background: #fff;
   border-radius: 50%;
   padding: 4px 0;
+  position: relative;
+  z-index: 1;
 }
+
 .td {
   padding: 6px;
-  background-color: #000;
+  background: #1d1d1f;
   border-radius: 50%;
-  
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Text content */
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
 .timeline-content h3 {
+  margin: 0 0 12px;
   font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1d1d1f;
 }
 
-.timeline-content{
-  width: 100%;
-}
-
+/* ---------- Cards: no border, standard shadow ---------- */
 .timeline-box {
-  border: 1px solid #c9c9c9;
-  border-radius: 12px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
   width: 100%;
-  padding: 15px;
+  box-sizing: border-box;
+  padding: 22px 24px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 6px 0 rgba(0, 0, 0, 0.14);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .timeline-box h4 {
-  margin-bottom: 8px;
+  margin: 0 0 8px;
   font-size: 18px;
   font-weight: 600;
-  font-weight: 400;
+  color: #1d1d1f;
 }
 
 .timeline-box p {
-  font-size: 16px;
-  color: #4d4c4c;
   margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #515154;
 }
 
-@media (max-width: 768px) {
-  .journey-section {
-    padding: 40px 30px;
-  }
-
-  .journey-head h2 {
-    font-size: 28px;
-  }
-
-  .timeline {
-    padding-left: 25px;
-    gap: 35px;
-  }
-
-  .timeline::before {
-    left: 27px;
-  }
-}
-/* Mobile */
-@media (max-width: 570px) {
-  .journey-section {
-    padding: 20px 20px 80px;
-    
-  }
-  .journey-head {
-    text-align: center;
-  }
-  .journey-head h2 {
-    font-size: 26px;
-    text-align: center;
-  }
-
-  .journey-head h2::after {
-    width: 35%;
-    left: 32%;
-  }
-
-  .timeline {
-    padding-left: -0px;
-    gap: 30px;
-  }
-
-  .timeline::before {
-    left: 4px;
-  }
-
-  .timeline-item {
-    gap: 15px;
-  }
-
-  .td {
-    padding: 5px;
-  }
-
-  .timeline-content h3 {
-    font-size: 17px;
-  }
-
-  .timeline-box {
-    padding: 12px;
-  }
-
-  .timeline-box h4 {
-    font-size: 16px;
-  }
-
-  .timeline-box p {
-    font-size: 14px;
-  }
+.timeline-content:hover .timeline-box {
+  transform: translate3d(0, -10px, 0);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
+.timeline-item:hover .timeline-dot .td {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Scroll animations ---------- */
 .timeline-item.fade-in {
   opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .timeline-item.fade-in.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
+
 .timeline-item.fade-in .td {
-  transform: scale(0.6);
-  opacity: 0;
-  transition: transform 0.6s ease, opacity 0.6s ease;
+  transform: scale(0);
 }
 
 .timeline-item.fade-in.show .td {
   transform: scale(1);
-  opacity: 1;
 }
+
+.timeline-item.fade-in.show:hover .timeline-dot .td {
+  transform: scale(1.4);
+}
+
 .journey-head.fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .journey-head.fade-in.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
-.timeline-content .timeline-box {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 28px;
+    gap: 32px;
+  }
+  .timeline::before {
+    left: 33px;
+  }
+  .timeline-item {
+    gap: 18px;
+  }
+  .timeline-box {
+    padding: 18px 20px;
+  }
 }
 
-.timeline-content:hover .timeline-box {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  border-color: #a0a0a0;
+@media (max-width: 570px) {
+  .journey-section {
+    padding: 30px 20px;
+  }
+  /* heading stays on the right, same as the other sections */
+  .journey-head {
+    align-items: flex-end;
+    text-align: right;
+  }
+  .timeline {
+    padding-left: 0;
+    gap: 28px;
+  }
+  .timeline::before {
+    left: 5px;
+  }
+  .timeline-item {
+    gap: 14px;
+  }
+  .timeline-content h3 {
+    font-size: 18px;
+  }
+  .timeline-box h4 {
+    font-size: 17px;
+  }
+  .timeline-box p {
+    font-size: 15px;
+  }
 }
 
+/* No hover on touch devices */
+@media (hover: none) {
+  .timeline-content:hover .timeline-box {
+    transform: none;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 6px 0 rgba(0, 0, 0, 0.14);
+  }
+  .timeline-item:hover .timeline-dot .td,
+  .timeline-item.fade-in.show:hover .timeline-dot .td {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
 
-.timeline-item:hover .timeline-dot .td {
-  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.08);
-  transform: scale(1.4);
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item.fade-in,
+  .journey-head.fade-in,
+  .timeline-box,
+  .td {
+    transition: none;
+  }
 }

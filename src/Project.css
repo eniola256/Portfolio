@@ -1,268 +1,235 @@
-.project-section{
-    padding: 70px 70px 10px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+.project-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 50px 24px 120px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.project-head{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
-}
+
+/* ---------- heading: right side, caps like About ---------- */
+.project-head { text-align: right; }
 
 .project-head h2 {
-  font-weight: 400;
-  font-size: 38px;
-  position: relative;
-  display: inline-block;
-  letter-spacing: none;
-}
-
-.project-head h2::after {
-  content: "";
-  position: absolute;
-  left: 0;              /* Stick underline to the right */
-  bottom: -6px;
-  width: 19%;           /* Control underline length */
-  height:  3px;
-  background-color: #4d4c4c;
-}
-.project-head p{
-    font-style: italic;
-    color:#706f6f ;
-    
-}
-.projects-list{
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 0;
-}
-
-.project {
-  border-radius: 12px;
-  width: 100%;
-  height: 35rem;
-  background: white;
-  
-  
-  border: 1px #c9c9c9 solid;
-  transition: 1s ease;
-  overflow: hidden;
-}
-
-
-
-.project img{
-    width: 100%;
-    height: 13rem;
-    object-fit: cover;
-}
-
-.project-txt{
-    padding: 5px 20px 20px ;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.project h3{
-  font-size: 26px;
-  font-weight: 400;
-  letter-spacing: 0.2px;
-}
-
-
-.project span{
-  display: inline-block;
-  margin-bottom: 2px;
-  font-weight: 500;
-  color: #000;
-}
-.project p{
-  font-size: 18px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: 1.2;
-  color: #4d4c4c;
-
+  color: #6e6e73;
+  font-style: normal;
 }
+.project-head p {
+  margin: 12px 0 0;
+  font-size: clamp(17px, 2vw, 22px);
+  font-style: italic;                 /* slanted */
+  color: #1d1d1f;                     /* near-black */
+}
+
+/* ---------- list ---------- */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 40px;
+  align-items: stretch;
+}
+
+/* ---------- card ---------- */
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 0 6px 0 rgba(0, 0, 0, 0.14);
+  transition:
+    opacity 0.8s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project.fade-in.show:hover {
+  transform: translate3d(0, -10px, 0);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- image ---------- */
+.project-media {
+  position: relative;                 /* anchors the status badge */
+  flex: 0 0 50%;
+  min-width: 0;
+}
+.project-media img {
+  display: block;
+  width: 100%;
+  height: auto;                       /* the whole image, at its own shape */
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.project-media .project-status {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- text side ---------- */
+.project-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project-body h3 {
+  margin: 0 0 14px;
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+}
+.project-summary {
+  margin: 0 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #515154;
+  text-wrap: pretty;
+}
+.sum-short { display: none; }         /* shown only on small screens */
+
+.project-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 980px;
+  background: rgba(0, 102, 204, 0.1);
+  color: #0066cc;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.project-stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project-stack li {
+  padding: 5px 12px;
+  border-radius: 980px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
 .project-btn {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-  padding: 0 20px 20px;
-  margin-top: auto;
+  align-items: center;
+  margin-top: 28px;
 }
 
-.project-btn a {
-  flex: 1;
-  padding: 12px 0;
-  border-radius: 8px;
-  border: 1px solid #000;
-  text-align: center;
+/* ---------- buttons (shared with the detail page) ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 980px;
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  text-align: center;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+.btn-primary { background: #1d1d1f; color: #ffffff; }
+.btn-primary:hover { background: #3a3a3c; }
+.btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1d1d1f;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.btn-secondary:hover { background: rgba(0, 0, 0, 0.09); }
+.btn-primary:active,
+.btn-secondary:active { transform: scale(0.97); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* large screens */
+@media (min-width: 1500px) {
+  .project-section { max-width: 1240px; }
 }
 
-/* Primary (Live Demo) */
-.project-btn .btn-primary {
-  background: #000;
-  color: #fff;
+/* small laptops / large tablets: still side by side, tighter */
+@media (max-width: 1100px) {
+  .project { gap: 32px; }
 }
 
-.project-btn .btn-primary:hover {
-  background: #222;
-  transform: translateY(-1px);
-}
-
-/* Secondary (GitHub) */
-.project-btn .btn-secondary {
-  background: #fff;
-  color: #000;
-}
-
-.project-btn .btn-secondary:hover {
-  background: #000;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-.project-btn a:active {
-  transform: scale(0.98);
-}
-
-@media (max-width: 1000px){
-    .projects-list{
-        flex-direction: column;
-    }
-}
-@media (max-width: 800px) {
-  .project-section {
-    padding: 10px 40px 30px;
-    height: auto; /* Remove fixed height */
-  }
-  .projects-list {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 25px;
-  }
-
-  .project-head{
-    width: 100%;
-    text-align: left;
-  }
-  .project-head p{
-    text-align: left;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .project-section {
-    padding: 70px 20px 20px;
-    height: 100%; /* Remove fixed height */
-    
-  }
-
-  .project-head h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .project-head h2::after {
-    left: 50%;
-    transform: translateX(-50%);  /* Center underline */
-    width: 28%;  
-  }
-
-  .project-head p {
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .projects-list {
-    flex-direction: column; /* Stack cards vertically */
-    gap: 25px;
-  }
-
+/* tablets and below: image on top, text below */
+@media (max-width: 900px) {
+  .project-section { padding: 40px 20px 80px; }
+  .projects-list { gap: 24px; margin-top: 32px; }
   .project {
-    height: auto; /* Let content decide height */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 16px;
   }
+  .project-media { flex: none; width: 100%; }
+  .project-body { padding: 0 8px 8px; }
+  .project-body h3 { font-size: 26px; }
+}
 
-  .project img {
-    height: 180px;
-  }
+/* phones: short write-up, three tags, full-width buttons */
+@media (max-width: 600px) {
+  .project-section { padding: 32px 16px 72px; }
+  .project { border-radius: 24px; padding: 14px; gap: 20px; }
+  .project-media img { border-radius: 16px; }
+  .project-body { padding: 0 6px 6px; }
+  .project-body h3 { font-size: 24px; margin-bottom: 10px; }
 
-  .project-txt {
-    padding: 15px;
-  }
+  .sum-full { display: none; }
+  .sum-short { display: inline; }
+  .project-summary { font-size: 15px; line-height: 1.55; margin-bottom: 18px; }
 
-  .project h3 {
-    font-size: 22px;
-  }
+  .project-stack li:nth-child(n + 4) { display: none; }
 
-  .project p {
-    font-size: 15px;
-    line-height: 1.4;
+  .project-btn { margin-top: 24px; gap: 10px; }
+  .project-btn .btn-primary,
+  .project-btn .btn-secondary {
+    flex: 1;
+    padding: 13px 16px;
   }
 }
 
-@media (max-width: 540px) {
-    .project-head h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-    .project-head h2::after {
-    left: 50%;
-    transform: translateX(-50%);  /* Center underline */
-    width: 41%;  
-  }
+/* very small phones: buttons stack */
+@media (max-width: 380px) {
+  .project-btn { flex-direction: column; }
+  .project-btn .btn-primary,
+  .project-btn .btn-secondary { flex: none; width: 100%; box-sizing: border-box; }
 }
 
-@media (max-width: 420px) {
-    .project-head h2 {
-    font-size: 30px;
-    text-align: center;
-  }
-    .project-head h2::after {
-    left: 50%;
-    transform: translateX(-50%);  /* Center underline */
-    width: 58%;  
-  }
+/* no hover-lift on touch screens */
+@media (hover: none) {
+  .project.fade-in.show:hover { transform: none; }
 }
 
-/* Base fade-in (hidden) */
-.project.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Visible state */
-.project.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Optional staggered delays */
-.project.fade-in.delay-1 { transition-delay: 0.2s; }
-.project.fade-in.delay-2 { transition-delay: 0.4s; }
-.project.fade-in.delay-3 { transition-delay: 0.6s; }
-
-.project-head.fade-in {
-  opacity: 0;
-  transform: translateY(25px); /* slightly below */
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.project-head.fade-in.show {
-  opacity: 1;
-  transform: translateY(0); /* move to original spot */
-}
-
-/* optional small delay so it appears slightly before cards */
-.project-head.fade-in.delay-head {
-  transition-delay: 0.1s;
+@media (prefers-reduced-motion: reduce) {
+  .project, .project.fade-in.show:hover { transform: none; transition: none; }
 }
