@@ -112,7 +112,7 @@
 .think-arrow:active { transform: scale(0.94); }
 .think-arrow:focus-visible,
 .think-dot:focus-visible {
-  outline: 2px solid #0066cc;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 

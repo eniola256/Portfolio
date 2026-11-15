@@ -31,7 +31,7 @@
 }
 .abt-curve path {
   fill: none;
-  stroke: #0066cc;
+  stroke: var(--accent);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 2 8;                        /* dotted; remove for a solid line */
@@ -121,7 +121,7 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  color: #0066cc;
+  color: var(--accent);
 }
 .abt-text h3 {
   margin: 0 0 10px;
@@ -141,7 +141,7 @@
   margin-top: 14px;
   font-size: 15px;
   font-weight: 500;
-  color: #0066cc;
+  color: var(--accent);
 }
 .abt-link i {
   display: inline-block;

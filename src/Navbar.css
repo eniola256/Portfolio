@@ -49,14 +49,14 @@
   border-radius: 999px;
   text-decoration: none;
   font-size: 15px;
-  color: #1d1d1f;
+  color: var(--ink);
   transition: color 0.3s ease;
 }
 
 
 
 .nav-items a.active {
-  color: #0066cc;
+  color: var(--accent);
 }
 
 /* the moving circular border */

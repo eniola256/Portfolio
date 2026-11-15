@@ -22,17 +22,66 @@
 }
 
 .home-section h1 span {
-  font-size: clamp(40px, 11vw, 100px);   /* 40px on phones, up to 100px on desktop */
-  font-weight: 600;
-  line-height: 1.05;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 13vw, 150px);   /* big editorial name */
+  font-weight: 400;
+  line-height: 0.95;
   letter-spacing: -0.03em;
+}
+
+.home-section h1 span em {
+  color: var(--accent);
+}
+
+/* availability tag */
+.home-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.home-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.home-hint {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.home-hint kbd {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .home-hint { display: none; }   /* no keyboard on phones */
 }
 
 .home-section a{
   text-decoration: none;
 }
 .top-par {
-  color: #4d4c4c;
+  color: var(--muted);
   font-size: clamp(16px, 2.4vw, 28px);
   line-height: 1.35;
   max-width: 34ch;                        /* stops long lines on wide screens */
@@ -73,7 +122,7 @@
 }
 
 .home-section button:focus-visible {
-  outline: 2px solid #0071e3;           /* keyboard focus ring */
+  outline: 2px solid var(--accent);           /* keyboard focus ring */
   outline-offset: 3px;
 }
 
@@ -83,7 +132,7 @@
   align-items: center;
   gap: 8px;
   color: #fff;
-  background-color: #1d1d1f;            /* Apple's near-black, softer than #000 */
+  background-color: var(--ink);            /* Apple's near-black, softer than #000 */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
@@ -105,7 +154,7 @@
 
 /* secondary: quiet, glassy pill */
 .right-btn {
-  color: #1d1d1f;
+  color: var(--ink);
   background-color: rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
