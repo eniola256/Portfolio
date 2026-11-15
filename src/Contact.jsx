@@ -5,7 +5,9 @@ import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
 const links = [
   { label: "WhatsApp", href: "https://wa.me/2349162323354" },
   { label: "GitHub", href: "https://github.com/eniola256" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/eniola-abayomi-013a74343?" },
+  { label: "Instagram", href: "https://www.instagram.com/buildwithaetech" },
+  { label: "TikTok", href: "https://www.tiktok.com/@buildwithaetech" },
+  { label: "X", href: "https://x.com/eniola_345" },
 ];
 
 function Contact() {
@@ -35,8 +37,8 @@ function Contact() {
         </Reveal>
 
         <Reveal index={3} className="ct-mail">
-          <a href="mailto:aetech357@gmail.com" className="ct-email">
-            aetech357@gmail.com <span aria-hidden="true">↗</span>
+          <a href="mailto:buildwithaetech@gmail.com" className="ct-email">
+            buildwithaetech@gmail.com <span aria-hidden="true">↗</span>
           </a>
         </Reveal>
 

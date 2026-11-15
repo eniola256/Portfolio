@@ -18,9 +18,12 @@ const projectItems = projects.map((p) => ({
 }));
 
 const linkItems = [
-  { label: "Email", hint: "Link", href: "mailto:aetech357@gmail.com" },
+  { label: "Email", hint: "Link", href: "mailto:buildwithaetech@gmail.com" },
   { label: "WhatsApp", hint: "Link", href: "https://wa.me/2349162323354" },
   { label: "GitHub", hint: "Link", href: "https://github.com/eniola256" },
+  { label: "Instagram", hint: "Link", href: "https://www.instagram.com/buildwithaetech" },
+  { label: "TikTok", hint: "Link", href: "https://www.tiktok.com/@buildwithaetech" },
+  { label: "X", hint: "Link", href: "https://x.com/eniola_345" },
 ];
 
 const allItems = [...sectionItems, ...projectItems, ...linkItems];

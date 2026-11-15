@@ -30,11 +30,9 @@ function Services() {
     <section
       ref={sectionRef}
       id="Services"
-      className={`sx sx-br sv${shown ? " show" : ""}`}
+      className={`sx sx-flat sv${shown ? " show" : ""}`}
     >
       <span className="sx-grid" aria-hidden="true" />
-      <span className="sx-ring" aria-hidden="true" />
-      <span className="sx-circle" aria-hidden="true" />
 
       <div className="sx-body">
         <Reveal as="p" index={0} className="sx-eyebrow">

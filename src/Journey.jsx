@@ -32,11 +32,9 @@ function Journey() {
     <section
       ref={sectionRef}
       id="Journey"
-      className={`sx jr${shown ? " show" : ""}`}
+      className={`sx sx-flat jr${shown ? " show" : ""}`}
     >
       <span className="sx-grid" aria-hidden="true" />
-      <span className="sx-ring" aria-hidden="true" />
-      <span className="sx-circle" aria-hidden="true" />
 
       <div className="sx-body">
         <Reveal as="p" index={0} className="sx-eyebrow">

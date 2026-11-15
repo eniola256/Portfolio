@@ -352,7 +352,6 @@
   background: radial-gradient(circle, var(--ink) 2.3px, transparent 2.8px) 0 0 / 15px 15px;
 }
 
-.abt-cta { display: none; }       /* phones only */
 
 /* ============================ */
 /* Responsive                    */
@@ -457,11 +456,4 @@
   }
   .abt-row.open .abt-body { display: block; }
 
-  .abt-cta {
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    margin: 28px 20px 0;
-    width: calc(100% - 40px);
-  }
 }

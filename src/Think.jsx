@@ -80,11 +80,9 @@ function Think() {
     <section
       ref={sectionRef}
       id="Think"
-      className={`sx sx-br th${shown ? " show" : ""}`}
+      className={`sx sx-flat th${shown ? " show" : ""}`}
     >
       <span className="sx-grid" aria-hidden="true" />
-      <span className="sx-ring" aria-hidden="true" />
-      <span className="sx-circle" aria-hidden="true" />
 
       <div className="sx-body th-body">
         <div className="th-left">

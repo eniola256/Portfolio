@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0 40px;
-  margin-top: auto;                       /* sits in the lower half of the screen */
+  margin-top: clamp(56px, 8vh, 88px);
   padding-top: clamp(40px, 8vh, 96px);
 }
 

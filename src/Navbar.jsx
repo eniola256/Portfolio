@@ -81,13 +81,14 @@ function Navbar() {
       aria-label="Main"
     >
       <Link to="/#home" className="logo" onClick={() => setIsOpen(false)}>
-        <svg className="logo-mark" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <svg className="logo-mark" viewBox="0 0 28 24" width="26" height="22" aria-hidden="true">
           <path
-            d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"
+            d="M8 6L2 12l6 6M20 6l6 6-6 6M16 3l-4 18"
             fill="none"
             stroke="currentColor"
             strokeWidth="2.4"
             strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         AE Tech

@@ -120,9 +120,6 @@ function About() {
             onToggle={() => setOpen(open === i ? null : i)}
           />
         ))}
-        <a href="#Projects" className="hero-btn abt-cta">
-          See my projects <span aria-hidden="true">→</span>
-        </a>
       </div>
     </section>
   );
