@@ -33,7 +33,7 @@
 
 .service h3 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 800;
   font-size: clamp(26px, 3.2vw, 40px);
   letter-spacing: -0.01em;
 }
