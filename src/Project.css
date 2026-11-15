@@ -1,102 +1,96 @@
 .project-section {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 50px 24px 120px;
+  padding: 90px 24px 100px;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* ---------- heading: right side, caps like About ---------- */
-.project-head { text-align: right; }
+.project-head { text-align: left; }
 
-
-/* ---------- list ---------- */
+/* ---------- index list ---------- */
 .projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  margin-top: 40px;
-  align-items: stretch;
+  margin-top: 48px;
+  border-bottom: 1px solid var(--line);
 }
 
-/* ---------- card ---------- */
-.project {
-  display: flex;
+.prow {
+  position: relative;                   /* anchors the stretched link */
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1.5fr) minmax(0, 1fr) 160px 110px;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
-  border-radius: 28px;
-  background: #ffffff;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.06),
-    0 0 6px 0 rgba(0, 0, 0, 0.14);
+  gap: 16px 28px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+/* two classes so this beats the global .fade-in transition in Contact.css */
+.prow.fade-in {
   transition:
-    opacity 0.8s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.project.fade-in.show:hover {
-  transform: translate3d(0, -10px, 0);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 0 10px 0 rgba(0, 0, 0, 0.2);
+    opacity 0.7s ease,
+    transform 0.7s ease,
+    padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- image ---------- */
-.project-media {
-  position: relative;                 /* anchors the status badge */
-  flex: 0 0 50%;
-  min-width: 0;
+.prow.fade-in.show:hover,
+.prow.fade-in.show:focus-within {
+  padding-left: 16px;
 }
-.project-media img {
-  display: block;
-  width: 100%;
-  height: auto;                       /* the whole image, at its own shape */
-  border-radius: 20px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+
+.prow-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--muted);
 }
-.project-media .project-status {
-  position: absolute;
-  top: 14px;
-  left: 14px;
+
+.prow-main h3 {
   margin: 0;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.2vw, 56px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
-/* ---------- text side ---------- */
-.project-body {
-  flex: 1;
-  min-width: 0;
+.prow-link {
+  color: var(--ink);
+  text-decoration: none;
+}
+.prow-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.prow:hover .prow-link,
+.prow:focus-within .prow-link {
+  color: var(--accent);
+}
+
+.prow-type {
+  margin: 10px 0 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
 }
-.project-body h3 {
-  margin: 0 0 14px;
-  font-size: clamp(24px, 2.6vw, 32px);
-  font-weight: 650;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: #1d1d1f;
+
+.prow-sum {
+  margin: 6px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 46ch;
 }
-.project-summary {
-  margin: 0 0 20px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #515154;
-  text-wrap: pretty;
-}
-.sum-short { display: none; }         /* shown only on small screens */
 
 .project-status {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 980px;
-  background: rgba(0, 102, 204, 0.1);
+  background: rgba(196, 45, 14, 0.1);
   color: var(--accent);
   font-size: 12px;
   font-style: normal;
@@ -117,15 +111,51 @@
   background: rgba(0, 0, 0, 0.05);
   font-size: 13px;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--ink);
 }
 
-.project-btn {
+/* thumbnail: greyscale until you point at the row */
+.prow-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: grayscale(1);
+  transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.prow:hover .prow-media img,
+.prow:focus-within .prow-media img {
+  filter: none;
+  transform: scale(1.04) rotate(-1deg);
+}
+
+.prow-actions {
+  position: relative;
+  z-index: 1;                           /* sits above the stretched link */
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
   align-items: center;
-  margin-top: 28px;
+  justify-content: flex-end;
+  gap: 18px;
+}
+.prow-live {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line);
+}
+.prow-live:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+.prow-arrow {
+  font-size: 26px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.prow:hover .prow-arrow,
+.prow:focus-within .prow-arrow {
+  color: var(--accent);
+  transform: translateX(6px);
 }
 
 /* ---------- buttons (shared with the detail page) ---------- */
@@ -140,11 +170,11 @@
   text-align: center;
   transition: background-color 0.25s ease, transform 0.2s ease;
 }
-.btn-primary { background: #1d1d1f; color: #ffffff; }
-.btn-primary:hover { background: #3a3a3c; }
+.btn-primary { background: var(--ink); color: #ffffff; }
+.btn-primary:hover { background: var(--accent); }
 .btn-secondary {
   background: rgba(0, 0, 0, 0.05);
-  color: #1d1d1f;
+  color: var(--ink);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 .btn-secondary:hover { background: rgba(0, 0, 0, 0.09); }
@@ -155,65 +185,34 @@
    RESPONSIVE
    ========================================================= */
 
-/* large screens */
-@media (min-width: 1500px) {
-  .project-section { max-width: 1240px; }
-}
-
-/* small laptops / large tablets: still side by side, tighter */
+/* laptops: drop the tag column */
 @media (max-width: 1100px) {
-  .project { gap: 32px; }
+  .prow { grid-template-columns: 48px minmax(0, 1fr) 150px 100px; }
+  .prow-stack { display: none; }
 }
 
-/* tablets and below: image on top, text below */
-@media (max-width: 900px) {
-  .project-section { padding: 40px 20px 80px; }
-  .projects-list { gap: 24px; margin-top: 32px; }
-  .project {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
-    padding: 16px;
+/* tablets and phones: image on top, text below */
+@media (max-width: 760px) {
+  .project-section { padding: 70px 20px 70px; }
+  .prow {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 14px 16px;
+    padding: 22px 0;
   }
-  .project-media { flex: none; width: 100%; }
-  .project-body { padding: 0 8px 8px; }
-  .project-body h3 { font-size: 26px; }
+  .prow-media { grid-column: 1 / -1; order: -1; }
+  .prow-media img { aspect-ratio: 16 / 9; filter: none; }
+  .prow-stack { display: flex; grid-column: 2; }
+  .prow-stack li:nth-child(n + 4) { display: none; }
+  .prow-actions { grid-column: 2; justify-content: space-between; }
+  .prow.fade-in.show:hover,
+  .prow.fade-in.show:focus-within { padding-left: 0; }
 }
 
-/* phones: short write-up, three tags, full-width buttons */
-@media (max-width: 600px) {
-  .project-section { padding: 32px 16px 72px; }
-  .project { border-radius: 24px; padding: 14px; gap: 20px; }
-  .project-media img { border-radius: 16px; }
-  .project-body { padding: 0 6px 6px; }
-  .project-body h3 { font-size: 24px; margin-bottom: 10px; }
-
-  .sum-full { display: none; }
-  .sum-short { display: inline; }
-  .project-summary { font-size: 15px; line-height: 1.55; margin-bottom: 18px; }
-
-  .project-stack li:nth-child(n + 4) { display: none; }
-
-  .project-btn { margin-top: 24px; gap: 10px; }
-  .project-btn .btn-primary,
-  .project-btn .btn-secondary {
-    flex: 1;
-    padding: 13px 16px;
-  }
-}
-
-/* very small phones: buttons stack */
-@media (max-width: 380px) {
-  .project-btn { flex-direction: column; }
-  .project-btn .btn-primary,
-  .project-btn .btn-secondary { flex: none; width: 100%; box-sizing: border-box; }
-}
-
-/* no hover-lift on touch screens */
 @media (hover: none) {
-  .project.fade-in.show:hover { transform: none; }
+  .prow-media img { filter: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project, .project.fade-in.show:hover { transform: none; transition: none; }
+  .prow, .prow.fade-in.show:hover { transition: none; padding-left: 0; }
+  .prow:hover .prow-media img { transform: none; }
 }

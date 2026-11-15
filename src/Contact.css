@@ -1,121 +1,100 @@
 /* ============================ */
 /* Contact Section Styling       */
+/* ============================ */
 
 .contact-section {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 100px 24px 40px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers everything horizontally */
-  justify-content: center;
-  text-align: center; /* aligns headings and paragraphs */
-  padding: 70px 20px;
-  gap: 10px;
-  background-color: #f9f9f9; /* optional light background */
-  height: 100%;
+  gap: 40px;
 }
 
 .contact-head h2 {
-  font-size: 38px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 9vw, 120px);
   font-weight: 400;
-  position: relative;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.contact-head h2 em { color: var(--accent); }
+
+.contact-sub {
+  margin: 24px 0 0;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.contact-email {
   display: inline-block;
-  margin-bottom: 15px;
-  font-style: normal;
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 56px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--line);
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
+.contact-email:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
-/* Underline below heading */
-
-
-.contact-head p {
-  font-size: 16px;
-  font-style: normal;
-  color: #706f6f;
-  max-width: 600px; /* limits width for better readability */
-  margin: 0 auto;
-}
-
-/* Contact buttons container */
-.contact-btns {
+/* secondary links */
+.contact-links {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* centers buttons horizontally */
-  margin-top: 20px;
+  gap: 12px;
 }
 
-/* Individual buttons */
 .contact-btn {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  border: 1px solid #c9c9c9;
-  border-radius: 10px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
   text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  background-color: #fff;
-  transition: all 0.3s ease;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-
-/* Hover effect */
 .contact-btn:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.contact-btn .material-symbols-outlined {
+  font-size: 20px;
+  color: inherit;
 }
 
-/* Icon inside button */
-.contact-btn .material-symbols-outlined {
-  font-size: 22px;
-  color: #333;
+.contact-foot {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--muted);
 }
 
 /* ============================ */
 /* Responsive adjustments       */
 /* ============================ */
 
-@media (max-width: 1350px) {
-    .contact-section {
-        padding: 30px 20px;
-        height: 100%;
-    }
-}
 @media (max-width: 768px) {
-
-   .contact-section{
-        padding: 70px 30px;
-
-    }
-
-  .contact-btns {
-    gap: 15px;
-  }
-
-  .contact-btn {
-    font-size: 15px;
-    padding: 10px 16px;
-  }
-
-  .contact-btn .material-symbols-outlined {
-    font-size: 20px;
-  }
+  .contact-section { padding: 80px 20px 32px; }
 }
 
-@media (max-width: 480px) {
-  .contact-section{
-    padding: 100px 30px 70px;
-    }
-  .contact-head h2 {
-    font-size: 48px;
-  }
-
-  .contact-head p {
-    font-size: 14px;
-  }
-
-}
-
-/* Fade-in animation system */
+/* Fade-in animation system (used by every section) */
 .fade-in {
   opacity: 0;
   transform: translateY(25px);
