@@ -1,71 +1,120 @@
+import { useState } from "react";
 import "./About.css";
 import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
 
 const items = [
   {
     n: "01",
-    title: "What I do",
-    img: "/abt1.png",
-    alt: "A project I built",
-    text: "I build clean, responsive, user-friendly web interfaces with modern technologies like React and CSS. I turn ideas and designs into structured, functional layouts, with close attention to spacing, responsiveness, and usability.",
+    tag: "Capabilities / 001",
+    title: "What I do.",
+    text: "I build clean, responsive, user-friendly web interfaces with modern technologies like React and CSS. I turn ideas and designs into structured, functional layouts.",
     link: "#Projects",
     cta: "See my projects",
+    deco: "plus",
   },
   {
     n: "02",
-    title: "How I work",
-    img: "/abt2.png",
-    alt: "My code editor",
-    text: "I focus on understanding how things work under the hood rather than just copying solutions, which helps me write more maintainable and scalable code. I'm always learning and refining my workflow.",
+    tag: "Approach / 002",
+    title: "How I work.",
+    text: "I focus on understanding how things work under the hood rather than just copying solutions.",
     link: "#Think",
-    cta: "See my thought process",
+    cta: "My thought process",
+    deco: "dots",
   },
   {
     n: "03",
-    title: "Where I'm going",
-    img: "/abt3.png",
-    alt: "Backend work",
-    text: "My long-term goal is to grow into a well-rounded full-stack developer with a strong foundation in both frontend and backend systems, taking on more complex problems to improve my craft.",
-    link: "#Journey",
-    cta: "See my journey",
+    tag: "Direction / 003",
+    title: "Where I’m going.",
+    text: "Exploring new technologies and building increasingly useful digital products.",
+    link: "#Contact",
+    cta: "Let’s connect",
   },
 ];
 
-function AboutRow({ item }) {
+function AboutRow({ item, index, open, onToggle }) {
   const [ref, isVisible] = useFadeInOnScroll();
+  const bodyId = `abt-body-${item.n}`;
+
   return (
-    <article ref={ref} className={`abt-row fade-in ${isVisible ? "show" : ""}`}>
-      <span className="abt-num">{item.n}</span>
-      <div className="abt-text">
-        <h3>{item.title}</h3>
+    <article
+      ref={ref}
+      className={`abt-row fade-in${isVisible ? " show" : ""}${open ? " open" : ""}`}
+      style={{ transitionDelay: isVisible ? `${index * 0.12}s` : "0s" }}
+    >
+      <div className="abt-row-head">
+        <span className="abt-num">{item.n}</span>
+        <div className="abt-titles">
+          <p className="abt-tag">{item.tag}</p>
+          <h3>{item.title}</h3>
+        </div>
+        {/* phones only: the whole header toggles the row */}
+        <button
+          type="button"
+          className="abt-toggle"
+          aria-expanded={open}
+          aria-controls={bodyId}
+          aria-label={`${open ? "Collapse" : "Expand"}: ${item.title}`}
+          onClick={onToggle}
+        >
+          <span aria-hidden="true">{open ? "−" : "+"}</span>
+        </button>
+      </div>
+
+      <div id={bodyId} className="abt-body">
         <p>{item.text}</p>
         <a href={item.link} className="abt-link">
-          {item.cta} <i>→</i>
+          {item.cta} <i aria-hidden="true">→</i>
         </a>
       </div>
-      <img className="abt-img" src={item.img} alt={item.alt} loading="lazy" />
+
+      {item.deco === "plus" && <span className="abt-deco abt-plus" aria-hidden="true" />}
+      {item.deco === "dots" && <span className="abt-deco abt-dots" aria-hidden="true" />}
     </article>
   );
 }
 
 function About() {
-  const [ref, isVisible] = useFadeInOnScroll();
+  const [open, setOpen] = useState(null);
+  const [copyRef, copyVisible] = useFadeInOnScroll();
 
   return (
     <section id="About" className="section">
-      <div className="abt-section">
-        <div ref={ref} className={`abt-head fade-in ${isVisible ? "show" : ""}`}>
-          <p className="head">About me</p>
-          <h2 className="statement">
+      {/* decoration */}
+      <span className="abt-grid" aria-hidden="true" />
+      <span className="abt-vline" aria-hidden="true" />
+      <span className="abt-sq abt-sq-blue-left" aria-hidden="true" />
+      <span className="abt-sq abt-sq-black" aria-hidden="true" />
+      <span className="abt-sq abt-sq-blue-right" aria-hidden="true" />
+      <span className="abt-ring2" aria-hidden="true" />
+
+      <div className="abt-left">
+        <span className="abt-ring" aria-hidden="true" />
+        <span className="abt-circle" aria-hidden="true" />
+
+        <div ref={copyRef} className={`abt-copy fade-in${copyVisible ? " show" : ""}`}>
+          <p className="abt-eyebrow">
+            <i aria-hidden="true" /> About me / 01
+          </p>
+          <h2 className="abt-heading">
             More than just a <em>frontend</em> developer.
           </h2>
+          <p className="abt-tagline">I build digital solutions that solve real problems.</p>
         </div>
+      </div>
 
-        <div className="abt-list">
-          {items.map((item) => (
-            <AboutRow key={item.n} item={item} />
-          ))}
-        </div>
+      <div className="abt-list">
+        {items.map((item, i) => (
+          <AboutRow
+            key={item.n}
+            item={item}
+            index={i}
+            open={open === i}
+            onToggle={() => setOpen(open === i ? null : i)}
+          />
+        ))}
+        <a href="#Projects" className="hero-btn abt-cta">
+          See my projects <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   );
