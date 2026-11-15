@@ -1,195 +1,459 @@
-.abt-section {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 100px 24px 80px;
-  box-sizing: border-box;
-  width: 100%;
-}
+/* ============================ */
+/* About: full-screen split      */
+/* ============================ */
 
+#About {
+  --d: clamp(220px, 26vw, 420px);     /* diameter of the blue corner circle */
 
-
-
-
-/* ---------- zigzag ---------- */
-.abt-flow {
   position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  row-gap: 110px;
-  margin-top: 40px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(32px, 6vw, 96px);
+  padding: 120px 56px 80px;
+  overflow: hidden;
 }
 
-.abt-curve {
+/* ---------- decoration (desktop) ---------- */
+.abt-grid {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
   pointer-events: none;
-  overflow: visible;
-  clip-path: inset(0 0 100% 0);                 /* hidden until visible */
-}
-.abt-curve path {
-  fill: none;
-  stroke: #0066cc;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-dasharray: 2 8;                        /* dotted; remove for a solid line */
-}
-.abt-curve.show {
-  clip-path: inset(0 0 0 0);                    /* the line draws top to bottom */
-  transition: clip-path 2.4s ease;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: calc(100% / 6) 25%;
+  opacity: 0.45;
 }
 
-/* ---------- cards ---------- */
-.abt-card {
-  position: relative;
+.abt-vline {
+  position: absolute;
+  left: 28px;
+  top: 110px;
+  bottom: 0;
+  width: 1px;
+  background: var(--ink);
+  pointer-events: none;
+}
+
+.abt-sq {
+  position: absolute;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-  width: 100%;
-  max-width: 700px;
-  box-sizing: border-box;
-  padding: 24px;
-  border-radius: 28px;
-  background: #ffffff;
-  text-decoration: none;
-  color: inherit;
+  pointer-events: none;
+}
+.abt-sq-blue-left {
+  left: 22px;
+  top: 36%;
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+}
+.abt-sq-black {
+  left: calc(var(--d) * 0.7);
+  bottom: calc(var(--d) * 0.17);
+  width: 9px;
+  height: 9px;
+  background: var(--ink);
+}
+.abt-sq-blue-right {
+  right: 5%;
+  bottom: 8%;
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+}
+
+/* big thin circle at the bottom right */
+.abt-ring2 {
+  position: absolute;
+  right: -9vw;
+  bottom: -14vw;
+  width: 28vw;
+  aspect-ratio: 1;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* blue circle + thin ring, centred on the bottom-left corner */
+.abt-circle,
+.abt-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.abt-circle {
+  z-index: 1;
+  width: var(--d);
+  aspect-ratio: 1;
+  left: calc(var(--d) * -0.5);
+  bottom: calc(var(--d) * -0.5);
+  background: var(--accent);
+}
+.abt-ring {
+  z-index: 0;
+  width: calc(var(--d) * 1.5);
+  aspect-ratio: 1;
+  left: calc(var(--d) * -0.75);
+  bottom: calc(var(--d) * -0.75);
+  border: 1px solid var(--ink);
+}
+
+/* ---------- left: heading (sits at the top) ---------- */
+.abt-left {
+  position: static;                 /* circle + ring anchor to the section's corner */
+  align-self: start;
+}
+.abt-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================ */
+/* Scroll-in animation           */
+/* ============================ */
+
+/* heading block: each piece slides up in turn */
+.abt-copy > * {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.06),
-    0 0 6px 0 rgba(0, 0, 0, 0.14);
-  will-change: transform;
+  transform: translate3d(0, 28px, 0);
   transition:
-    opacity 0.7s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),   /* smooth ease-out */
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 0.14s);
 }
-.abt-card.show {
+.abt-copy.show > * {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: none;
 }
 
-/* hover: lift 10px */
-.abt-card.show:hover {
-  transform: translate3d(0, -10px, 0);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 0 10px 0 rgba(0, 0, 0, 0.2);
+/* rows: rise one after another */
+.abt-row.reveal {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.25s + var(--i, 0) * 0.16s);
+}
+.abt-row.reveal.show {
+  opacity: 1;
+  transform: none;
 }
 
-/* prevents flicker when the cursor is at the bottom edge of a lifted card */
-.abt-card::after {
+/* the long vertical line draws top to bottom, like the old curve did */
+.abt-list::before {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: -10px;
-  height: 10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
+}
+.abt-list.show::before {
+  transform: scaleY(1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .abt-card,
-  .abt-card.show,
-  .abt-card.show:hover {
-    transform: none;
-    transition: none;
-  }
+/* decoration: circle grows from the corner, rings and lines fade/draw in */
+.abt-circle {
+  transform: scale(0.35);
+  opacity: 0;
+  transition:
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
 }
-@keyframes abtUp {
-  to { opacity: 1; transform: translateY(0); }
+.abt-ring {
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    opacity 1s ease 0.2s;
+}
+.abt-vline {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+}
+.abt-sq,
+.abt-ring2 {
+  opacity: 0;
+  transition: opacity 0.9s ease 0.8s;
+}
+#About.show .abt-circle,
+#About.show .abt-ring {
+  transform: none;
+  opacity: 1;
+}
+#About.show .abt-vline {
+  transform: scaleY(1);
+}
+#About.show .abt-sq,
+#About.show .abt-ring2 {
+  opacity: 1;
 }
 
-.c1 { justify-self: start; }
-.c2 { justify-self: center; }
-.c3 { justify-self: end; }
+.abt-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 32px;
+  max-width: 440px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.abt-eyebrow i {
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+}
+.abt-eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.5;
+}
 
-.abt-thumb img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 18px;
+.abt-heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(42px, min(5.6vw, 11vh), 100px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+.abt-heading em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.abt-tagline {
+  margin: 36px 0 0;
+  max-width: 28ch;
+  font-family: var(--font-mono);
+  font-size: clamp(15px, 1.5vw, 22px);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* ---------- right: numbered rows ---------- */
+.abt-list {
+  position: relative;
+  z-index: 2;
+}
+
+.abt-row {
+  position: relative;
+  padding: 28px 0 32px 32px;
+}
+.abt-row:not(:first-child) {
+  border-top: 1px solid var(--line);
+}
+
+.abt-row-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  align-items: start;
+  gap: 0 4px;
 }
 
 .abt-num {
-  display: block;
-  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.abt-tag {
+  margin: 4px 0 8px;
+  font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #0066cc;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-.abt-text h3 {
-  margin: 0 0 10px;
-  font-size: 26px;
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  color: #1d1d1f;
-}
-.abt-text p {
+
+.abt-titles h3 {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.55;
-  color: #515154;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
+
+.abt-toggle { display: none; }   /* phones only */
+
+.abt-body {
+  padding-left: 80px;
+  padding-right: 24px;
+}
+.abt-body p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
 .abt-link {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 16px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+  color: var(--ink);
+  text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  color: #0066cc;
 }
 .abt-link i {
   display: inline-block;
   font-style: normal;
+  color: var(--accent);
+  margin-left: 6px;
   transition: transform 0.25s ease;
 }
-.abt-card:hover .abt-link i { transform: translateX(4px); }
+.abt-link:hover { color: var(--accent); }
+.abt-link:hover i { transform: translateX(5px); }
 
-/* ---------- responsive ---------- */
-@media (max-width: 900px) {
-  .abt-curve { display: none; }
-  .abt-flow { row-gap: 20px; margin-top: 56px; }
-  .abt-card {
-    grid-template-columns: 1fr;       /* image above text on mobile */
-    gap: 20px;
-    max-width: none;
-    justify-self: stretch;
+/* small ornaments in the row corners */
+.abt-deco {
+  position: absolute;
+  top: 30px;
+  right: 8px;
+  pointer-events: none;
+}
+.abt-plus {
+  width: 32px;
+  height: 32px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) center / 1px 100% no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 100% 1px no-repeat;
+}
+.abt-dots {
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle, var(--ink) 2.3px, transparent 2.8px) 0 0 / 15px 15px;
+}
+
+
+/* ============================ */
+/* Responsive                    */
+/* ============================ */
+
+/* laptops with short screens: tighter rows so all three fit in one screen */
+@media (min-width: 801px) and (max-height: 900px) {
+  #About { padding-top: 96px; padding-bottom: 40px; }
+  .abt-row { padding-top: 18px; padding-bottom: 22px; }
+  .abt-body p { margin-top: 6px; }
+  .abt-link { margin-top: 12px; }
+  .abt-deco { top: 20px; }
+}
+
+@media (max-width: 1000px) {
+  #About { padding-left: 36px; padding-right: 36px; }
+  .abt-deco, .abt-ring2 { display: none; }
+}
+
+/* phones and small tablets: heading, then expandable rows */
+@media (max-width: 800px) {
+  #About {
+    --d: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 100px 0 40px;
   }
-  .abt-thumb img { aspect-ratio: 16 / 9; }
-  .abt-section { padding: 90px 20px 60px; }
-  .abt-building { margin-top: 56px; }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .abt-card { opacity: 1; transform: none; animation: none !important; }
-  .abt-curve { clip-path: none; transition: none; }
-}
+  .abt-grid { opacity: 0.35; }
+  .abt-vline, .abt-sq, .abt-ring2 { display: none; }
 
-/* keep your existing .fade-in / .fade-in.show rules below */
+  .abt-left {
+    position: relative;              /* circle + ring anchor to this block instead */
+    align-self: stretch;
+    padding: 0 20px 120px;           /* room for the circle above the rows */
+  }
+  .abt-eyebrow { margin-bottom: 24px; }
+  .abt-heading { font-size: clamp(40px, 12.5vw, 72px); }
+  .abt-tagline { margin-top: 24px; font-size: 14px; }
 
-.abt-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-.abt-placeholder.blue     { background: linear-gradient(160deg, #2b7fa6, #0a4a57); color: #ffffff; }
-.abt-placeholder.dark     { background: #1e1e1e; color: #9cdcfe; }
-.abt-placeholder.graphite { background: linear-gradient(160deg, #3a3a3c, #111113); color: #d2d2d7; }
+  /* circle + ring sit at the right edge, just above the first row */
+  .abt-circle {
+    left: auto;
+    right: calc(var(--d) * -0.5);
+    bottom: calc(var(--d) * -0.5);
+  }
+  .abt-ring {
+    left: auto;
+    right: calc(var(--d) * -0.75);
+    bottom: calc(var(--d) * -0.75);
+  }
 
-@media (max-width: 900px) {
-  .abt-placeholder { aspect-ratio: 16 / 9; }
+  /* rows cover the lower half of the circle */
+  .abt-list::before { display: none; }
+  .abt-list {
+    padding: 0;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+
+  .abt-row,
+  .abt-row:not(:first-child) {
+    padding: 0 20px;
+    border-top: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .abt-row-head {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .abt-num { font-size: 22px; }
+  .abt-tag { margin: 0 0 4px; font-size: 11px; }
+  .abt-titles h3 { font-size: 21px; }
+
+  /* the button's ::after stretches over the whole header */
+  .abt-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 26px;
+    cursor: pointer;
+  }
+  .abt-toggle::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .abt-body {
+    display: none;
+    padding: 0 0 24px 44px;
+  }
+  .abt-row.open .abt-body { display: block; }
+
 }

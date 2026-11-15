@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // ids must match each section's id attribute exactly
@@ -7,25 +7,21 @@ const links = [
   { id: "home", label: "Home" },
   { id: "About", label: "About" },
   { id: "Projects", label: "Projects" },
-  { id: "Contact", label: "Lets Connect" },
+  { id: "Contact", label: "Let's Connect" },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(null);
-  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
-  const navItemsRef = useRef(null);
-  const linkRefs = useRef({});
+  const [spy, setSpy] = useState("home");
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 24);
   const { pathname } = useLocation();
 
-  /* ---- scroll spy ----
-     Only the sections that have a nav link are watched, so while you're in
-     Tech / Think / Journey the circle simply stays on the last link. */
+  // no link is active on the project pages
+  const active = pathname === "/" ? spy : null;
+
+  /* ---- scroll spy: only the sections that have a nav link are watched ---- */
   useEffect(() => {
-    if (pathname !== "/") {
-      setActive(null);
-      return;
-    }
+    if (pathname !== "/") return;
 
     const sections = links
       .map((l) => document.getElementById(l.id))
@@ -34,7 +30,7 @@ function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
+          if (e.isIntersecting) setSpy(e.target.id);
         });
       },
       { rootMargin: "-45% 0px -50% 0px" } // thin band across the middle
@@ -45,7 +41,7 @@ function Navbar() {
     const onScroll = () => {
       const atBottom =
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
-      if (atBottom) setActive(links[links.length - 1].id);
+      if (atBottom) setSpy(links[links.length - 1].id);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -55,40 +51,12 @@ function Navbar() {
     };
   }, [pathname]);
 
-  /* ---- move the circle to the active link ---- */
-  const measure = useCallback(() => {
-    const el = linkRefs.current[active];
-    if (!el) return;
-    const next = {
-      left: el.offsetLeft,
-      top: el.offsetTop,
-      width: el.offsetWidth,
-      height: el.offsetHeight,
-    };
-    // skip the update if nothing changed (prevents render loops)
-    setPill((prev) =>
-      prev.left === next.left &&
-      prev.top === next.top &&
-      prev.width === next.width &&
-      prev.height === next.height
-        ? prev
-        : next
-    );
-  }, [active]);
-
-  useLayoutEffect(() => {
-    measure();
-  }, [measure, isOpen]);
-
-  // re-measure when the nav changes size (resize, font load, breakpoint)
+  /* ---- transparent on the hero, solid once you scroll ---- */
   useEffect(() => {
-    const el = navItemsRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    document.fonts?.ready.then(measure);
-    return () => ro.disconnect();
-  }, [measure]);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   /* ---- close the mobile menu with Escape ---- */
   useEffect(() => {
@@ -98,29 +66,39 @@ function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
 
+  // dot grid: opens the quick-jump palette on desktop, the link menu on phones
+  const onDots = () => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      setIsOpen((o) => !o);
+    } else {
+      window.dispatchEvent(new Event("open-command-palette"));
+    }
+  };
+
   return (
-    <nav className="navbar">
+    <nav
+      className={`navbar${scrolled ? " scrolled" : ""}${isOpen ? " menu-open" : ""}`}
+      aria-label="Main"
+    >
       <Link to="/#home" className="logo" onClick={() => setIsOpen(false)}>
-        <span className="material-symbols-outlined">code_off</span>
+        <svg className="logo-mark" viewBox="0 0 28 24" width="26" height="22" aria-hidden="true">
+          <path
+            d="M8 6L2 12l6 6M20 6l6 6-6 6M16 3l-4 18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
         AE Tech
       </Link>
 
-      <div ref={navItemsRef} className={`nav-items ${isOpen ? "open" : ""}`}>
-        <span
-          className="nav-pill"
-          aria-hidden="true"
-          style={{
-            width: pill.width,
-            height: pill.height,
-            transform: `translate(${pill.left}px, ${pill.top}px)`,
-            opacity: active ? 1 : 0,
-          }}
-        />
+      <div className={`nav-items ${isOpen ? "open" : ""}`}>
         {links.map((l) => (
           <Link
             key={l.id}
             to={`/#${l.id}`}
-            ref={(el) => (linkRefs.current[l.id] = el)}
             className={active === l.id ? "active" : ""}
             aria-current={active === l.id ? "true" : undefined}
             onClick={() => setIsOpen(false)}
@@ -132,14 +110,18 @@ function Navbar() {
 
       <button
         type="button"
-        className="menu-toggle"
-        onClick={() => setIsOpen((o) => !o)}
+        className="nav-dots"
+        onClick={onDots}
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
       >
-        <span className="material-symbols-outlined">
-          {isOpen ? "close" : "menu"}
-        </span>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          {[4, 12, 20].flatMap((y) =>
+            [4, 12, 20].map((x) => (
+              <circle key={`${x}-${y}`} cx={x} cy={y} r="1.9" fill="currentColor" />
+            ))
+          )}
+        </svg>
       </button>
     </nav>
   );

@@ -1,49 +1,61 @@
-import { useFadeInOnScroll } from "./UseFadeInOnScroll";
 import "./Contact.css";
+import Reveal from "./Reveal.jsx";
+import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
+
+const links = [
+  { label: "WhatsApp", href: "https://wa.me/2349162323354" },
+  { label: "GitHub", href: "https://github.com/eniola256" },
+  { label: "Instagram", href: "https://www.instagram.com/buildwithaetech" },
+  { label: "TikTok", href: "https://www.tiktok.com/@buildwithaetech" },
+  { label: "X", href: "https://x.com/eniola_345" },
+];
 
 function Contact() {
-  const [headRef, headVisible] = useFadeInOnScroll();
-  const [btnRef, btnVisible] = useFadeInOnScroll();
+  const [sectionRef, shown] = useFadeInOnScroll();
 
   return (
-    <section id="Contact" className="section">
-      <div className="contact-section">
+    <section
+      ref={sectionRef}
+      id="Contact"
+      className={`sx sx-bl ct${shown ? " show" : ""}`}
+    >
+      <span className="sx-grid" aria-hidden="true" />
+      <span className="sx-ring" aria-hidden="true" />
+      <span className="sx-circle" aria-hidden="true" />
 
-        <div
-          ref={headRef}
-          className={`contact-head fade-in ${headVisible ? "show" : ""}`}
-        >
-          <h2>Contact </h2>
-          <p>
-            I'm always open to discussing new projects, opportunities, or just chatting about frontend development. Feel free to reach out.
-          </p>
-        </div>
+      <div className="sx-body">
+        <Reveal as="p" index={0} className="sx-eyebrow">
+          <i aria-hidden="true" /> Contact / 06
+        </Reveal>
 
-        <div
-          ref={btnRef}
-          className={`contact-btns fade-in ${btnVisible ? "show" : ""}`}
-        >
-          <a href="mailto:aetech357@gmail.com" className="contact-btn">
-            <span className="material-symbols-outlined">mail</span>
-            Email
+        <Reveal as="h2" index={1} className="ct-heading">
+          Let's build something <em>sharp</em>.
+        </Reveal>
+
+        <Reveal as="p" index={2} className="ct-sub">
+          I'm open to new projects and opportunities. Tell me what you need and I'll get back to you.
+        </Reveal>
+
+        <Reveal index={3} className="ct-mail">
+          <a href="mailto:buildwithaetech@gmail.com" className="ct-email">
+            buildwithaetech@gmail.com <span aria-hidden="true">↗</span>
           </a>
+        </Reveal>
 
-          <a href="https://github.com/eniola256" target="_blank" rel="noreferrer" className="contact-btn">
-            <span className="material-symbols-outlined">code</span>
-            GitHub
-          </a>
+        <Reveal as="ul" index={4} className="ct-links">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a href={l.href} target="_blank" rel="noreferrer" className="ct-btn">
+                {l.label} <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </Reveal>
 
-          <a href="https://linkedin.com/in/eniola-abayomi-013a74343?" target="_blank" rel="noreferrer" className="contact-btn">
-            <span className="material-symbols-outlined">work</span>
-            LinkedIn
-          </a>
-
-          <a href="https://wa.me/2349162323354" target="_blank" rel="noreferrer" className="contact-btn">
-            <span className="material-symbols-outlined">chat</span>
-            WhatsApp
-          </a>
-        </div>
-
+        <p className="ct-foot">
+          <span>© 2026 AE Tech</span>
+          <span>Lagos, NG</span>
+        </p>
       </div>
     </section>
   );

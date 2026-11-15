@@ -1,5 +1,7 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "./projectsData.js";
+import useSeo from "./useSeo.js";
 import "./Project.css";
 import "./ProjectDetail.css";
 
@@ -7,6 +9,38 @@ function ProjectDetail() {
   const { slug } = useParams();
   const i = projects.findIndex((p) => p.slug === slug);
   const project = projects[i];
+
+  const jsonLd = useMemo(
+    () =>
+      project && {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        name: project.name,
+        description: project.shortSummary,
+        url: `https://buildwithaetech.com/projects/${project.slug}`,
+        image: `https://buildwithaetech.com${project.img}`,
+        creator: { "@id": "https://buildwithaetech.com/#person" },
+        keywords: project.stack.join(", "),
+      },
+    [project]
+  );
+
+  useSeo(
+    project
+      ? {
+          title: `${project.name}: ${project.type} | Abayomi Eniola`,
+          description: project.shortSummary,
+          path: `/projects/${project.slug}`,
+          image: project.img,
+          jsonLd,
+        }
+      : {
+          title: "Project not found | Abayomi Eniola",
+          description: "This project page does not exist.",
+          path: `/projects/${slug}`,
+          noindex: true,
+        }
+  );
 
   if (!project) {
     return (

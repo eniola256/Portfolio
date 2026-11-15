@@ -1,45 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import "./Think.css";
+import Reveal from "./Reveal.jsx";
 import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
 
 const items = [
   {
-    icon: "track_changes",
     title: "Goal-Oriented",
     text: "I always start with a clear goal in mind. Understanding what you want to achieve helps me design solutions that are focused, efficient, and truly useful.",
   },
   {
-    icon: "psychology",
     title: "Problem-First Approach",
     text: "Before writing any code, I deeply analyze the problem. This ensures that the solution solves the real issue—not just the surface-level symptoms.",
   },
   {
-    icon: "bolt",
     title: "Performance Minded",
     text: "I care about speed, scalability, and smooth user experience. I aim to build applications that remain fast and reliable as they grow.",
   },
   {
-    icon: "palette",
     title: "User-Centered Design",
     text: "Every decision I make considers the end user. I focus on clarity, simplicity, and usability so people enjoy using what I build.",
   },
   {
-    icon: "build",
     title: "Iterative Improvement",
     text: "I believe in building, testing, learning, and improving. This allows me to refine ideas into polished, effective solutions over time.",
   },
   {
-    icon: "groups",
     title: "Collaboration-Driven",
     text: "I value communication and feedback. Working closely with people helps me understand their vision and turn it into reality.",
   },
 ];
 
 const SWAP_MS = 350; // keep equal to the transition time in Think.css
+const pad = (n) => String(n).padStart(2, "0");
 
 function Think() {
-  const [headRef, headVisible] = useFadeInOnScroll();
-  const [stageRef, stageVisible] = useFadeInOnScroll();
+  const [sectionRef, shown] = useFadeInOnScroll();
 
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -82,54 +77,65 @@ function Think() {
   const item = items[index];
 
   return (
-    <section id="Think" className="section">
-      <div className="think-section">
-        <div
-          ref={headRef}
-          className={`think-head fade-in ${headVisible ? "show" : ""}`}
-        >
-          <p className="head">My Thought Process</p>
-          <h2 className="statement">I'm always open to discussing new projects, <br/> creative ideas</h2>
-        </div> 
+    <section
+      ref={sectionRef}
+      id="Think"
+      className={`sx sx-flat th${shown ? " show" : ""}`}
+    >
+      <span className="sx-grid" aria-hidden="true" />
 
-        <div
-          ref={stageRef}
-          className={`think-carousel fade-in ${stageVisible ? "show" : ""}`}
+      <div className="sx-body th-body">
+        <div className="th-left">
+          <Reveal as="p" index={0} className="sx-eyebrow">
+            <i aria-hidden="true" /> My thought process / 04
+          </Reveal>
+          <Reveal as="h2" index={1} className="sx-heading">
+            I'm always open to discussing new projects, creative ideas
+          </Reveal>
+        </div>
+
+        <Reveal
+          index={2}
+          className="th-right"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div className="think-stage" aria-live="polite">
-            <div className={`think-item ${visible ? "visible" : ""}`}>
-              <span className="material-symbols-outlined think-icon" aria-hidden="true">
-                {item.icon}
-              </span>
+          <div className="th-stage" aria-live="polite">
+            <div className={`th-item${visible ? " visible" : ""}`}>
+              <span className="th-num">{pad(index + 1)}</span>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </div>
           </div>
 
-          <div className="think-dots">
-            {items.map((it, i) => (
-              <button
-                key={it.title}
-                type="button"
-                className={`think-dot ${i === index ? "active" : ""}`}
-                aria-label={`Show ${it.title}`}
-                aria-current={i === index ? "true" : undefined}
-                onClick={() => goTo(i)}
-              />
-            ))}
-          </div>
+          <div className="th-pager">
+            <button type="button" className="th-arrow" aria-label="Previous" onClick={prev}>
+              ←
+            </button>
 
-          <div className="think-controls">
-            <button type="button" className="think-arrow" aria-label="Previous" onClick={prev}>
-              <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-            </button>
-            <button type="button" className="think-arrow" aria-label="Next" onClick={next}>
-              <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            <div className="th-count">
+              <p>
+                {pad(index + 1)} / {pad(items.length)}
+              </p>
+              <div className="th-segs">
+                {items.map((it, i) => (
+                  <button
+                    key={it.title}
+                    type="button"
+                    className={`th-seg${i === index ? " active" : ""}`}
+                    aria-label={`Show ${it.title}`}
+                    aria-current={i === index ? "true" : undefined}
+                    onClick={() => goTo(i)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <button type="button" className="th-arrow" aria-label="Next" onClick={next}>
+              →
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

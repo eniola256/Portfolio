@@ -1,128 +1,107 @@
-/* ============================ */
-/* Contact Section Styling       */
+/* Contact: one big line, the email, and a few square buttons */
 
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centers everything horizontally */
-  justify-content: center;
-  text-align: center; /* aligns headings and paragraphs */
-  padding: 70px 20px;
-  gap: 10px;
-  background-color: #f9f9f9; /* optional light background */
-  height: 100%;
+.ct-heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(44px, min(8vw, 15vh), 132px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+.ct-heading em {
+  font-style: normal;
+  color: var(--accent);
 }
 
-.contact-head h2 {
-  font-size: 38px;
-  font-weight: 400;
-  position: relative;
+.ct-sub {
+  margin: 24px 0 0;
+  max-width: 34em;
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.55;
+  text-transform: uppercase;
+  padding-left: 18px;
+  border-left: 4px solid var(--accent);
+}
+
+.ct-mail {
+  margin-top: 32px;
+}
+.ct-email {
   display: inline-block;
-  margin-bottom: 15px;
-  font-style: normal;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
 }
+.ct-email span { color: var(--accent); }
+.ct-email:hover { color: var(--accent); }
 
-/* Underline below heading */
-
-
-.contact-head p {
-  font-size: 16px;
-  font-style: normal;
-  color: #706f6f;
-  max-width: 600px; /* limits width for better readability */
-  margin: 0 auto;
-}
-
-/* Contact buttons container */
-.contact-btns {
+.ct-links {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* centers buttons horizontally */
-  margin-top: 20px;
+  gap: 12px;
+  margin-top: 28px;
 }
-
-/* Individual buttons */
-.contact-btn {
-  display: flex;
+.ct-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border: 1px solid #c9c9c9;
-  border-radius: 10px;
+  gap: 18px;
+  padding: 16px 24px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  color: var(--ink);
   text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  background-color: #fff;
-  transition: all 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.ct-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
-/* Hover effect */
-.contact-btn:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+.ct-foot {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ct-foot span {
+  position: relative;
+  z-index: 2;
 }
 
-/* Icon inside button */
-.contact-btn .material-symbols-outlined {
-  font-size: 22px;
-  color: #333;
+/* ---------- laptops with short screens ---------- */
+@media (min-width: 801px) and (max-height: 900px) {
+  .ct-sub { margin-top: 16px; }
+  .ct-mail { margin-top: 22px; }
+  .ct-links { margin-top: 20px; }
+  .ct-foot { padding-top: 24px; }
 }
 
-/* ============================ */
-/* Responsive adjustments       */
-/* ============================ */
-
-@media (max-width: 1350px) {
-    .contact-section {
-        padding: 30px 20px;
-        height: 100%;
-    }
-}
-@media (max-width: 768px) {
-
-   .contact-section{
-        padding: 70px 30px;
-
-    }
-
-  .contact-btns {
-    gap: 15px;
-  }
-
-  .contact-btn {
-    font-size: 15px;
-    padding: 10px 16px;
-  }
-
-  .contact-btn .material-symbols-outlined {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-section{
-    padding: 100px 30px 70px;
-    }
-  .contact-head h2 {
-    font-size: 48px;
-  }
-
-  .contact-head p {
-    font-size: 14px;
-  }
-
-}
-
-/* Fade-in animation system */
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+/* ---------- phones ---------- */
+@media (max-width: 800px) {
+  .ct-heading { font-size: clamp(42px, 13vw, 76px); }
+  .ct-email { font-size: clamp(20px, 6.4vw, 32px); }
+  .ct-links { flex-direction: column; }
+  .ct-btn { width: 100%; justify-content: space-between; box-sizing: border-box; }
+  .ct-foot { padding-top: 56px; }
 }

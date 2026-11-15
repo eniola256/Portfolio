@@ -2,36 +2,82 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>Abayomi Eniola | Web Developer & Full-Stack Developer</title>
-
+    <title>Abayomi Eniola | Frontend Developer in Lagos, Nigeria</title>
     <meta
       name="description"
-      content="I'm Abayomi Eniola, a web developer building modern, responsive web applications using React, JavaScript, Node.js and other technologies."
+      content="Abayomi Eniola is a frontend developer in Lagos, Nigeria. I build fast, responsive websites and online stores with React and Node.js for small businesses."
     />
-
-    <meta name="robots" content="index, follow" />
-
-    <link rel="canonical" href="https://www.buildwithaetech.com/" />
+    <meta name="author" content="Abayomi Eniola" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://buildwithaetech.com/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Abayomi Eniola | Web Developer" />
+    <meta property="og:site_name" content="AE Tech" />
+    <meta property="og:locale" content="en_NG" />
+    <meta property="og:title" content="Abayomi Eniola | Frontend Developer in Lagos, Nigeria" />
     <meta
       property="og:description"
-      content="Explore my portfolio, projects, and journey as a web developer."
+      content="Fast, responsive websites and online stores built with React and Node.js. Browse my projects and get in touch."
     />
-    <meta property="og:url" content="https://www.buildwithaetech.com/" />
+    <meta property="og:url" content="https://buildwithaetech.com/" />
+    <meta property="og:image" content="https://buildwithaetech.com/og-image.png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="1254" />
+    <meta property="og:image:alt" content="Abayomi Eniola, frontend developer at AE Tech" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Abayomi Eniola | Frontend Developer in Lagos, Nigeria" />
     <meta
-      property="og:image"
-      content="https://www.buildwithaetech.com/og-image.png"
+      name="twitter:description"
+      content="Fast, responsive websites and online stores built with React and Node.js."
     />
+    <meta name="twitter:image" content="https://buildwithaetech.com/og-image.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://buildwithaetech.com/#website",
+            "url": "https://buildwithaetech.com/",
+            "name": "AE Tech",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://buildwithaetech.com/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://buildwithaetech.com/#person",
+            "name": "Abayomi Eniola",
+            "jobTitle": "Frontend Developer",
+            "url": "https://buildwithaetech.com/",
+            "image": "https://buildwithaetech.com/og-image.png",
+            "worksFor": { "@type": "Organization", "name": "AE Tech" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Lagos",
+              "addressCountry": "NG"
+            },
+            "knowsAbout": ["React", "JavaScript", "Node.js", "Web development", "Ecommerce websites"],
+            "sameAs": [
+              "https://github.com/eniola256",
+              "https://www.instagram.com/buildwithaetech",
+              "https://www.tiktok.com/@buildwithaetech",
+              "https://x.com/eniola_345"
+            ]
+          }
+        ]
+      }
+    </script>
 
     <!-- Theme -->
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#EFEEE9" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -39,12 +85,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Archivo:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -53,6 +97,20 @@
 
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Abayomi Eniola, Frontend Developer in Lagos, Nigeria</h1>
+      <p>
+        I build fast, responsive websites and online stores with React and Node.js for small
+        businesses. Projects: AE Cups (coffee shop web app), Lookit (streetwear storefront) and
+        Yaba-deli (campus food delivery app).
+      </p>
+      <p>
+        <a href="https://github.com/eniola256">GitHub</a> ·
+        <a href="https://x.com/eniola_345">X</a> ·
+        <a href="https://www.instagram.com/buildwithaetech">Instagram</a> ·
+        <a href="https://www.tiktok.com/@buildwithaetech">TikTok</a>
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
