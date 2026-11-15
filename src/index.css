@@ -33,28 +33,151 @@ body {
   outline-offset: 3px;
 }
 
-.statement {
+/* ============================================================
+   Shared frame for the full-screen sections (Services, Think,
+   Journey, Contact): .sx = section, .sx-body = content layer,
+   .sx-eyebrow / .sx-heading = label + big heading, .sx-r = the
+   slide-up reveal (see Reveal.jsx), .sx-circle / .sx-ring = the
+   blue corner circle with its thin ring.
+   ============================================================ */
+.sx {
+  --d: clamp(200px, 22vw, 360px);          /* diameter of the blue circle */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding: 120px 56px 56px;                 /* top clears the floating navbar */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sx-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: calc(100% / 6) 25%;
+  opacity: 0.4;
+}
+
+.sx-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* "WHAT I BUILD / 03" + a thin line */
+.sx-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 28px;
+  max-width: 440px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sx-eyebrow i {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+}
+.sx-eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ink);
+  opacity: 0.5;
+}
+
+.sx-heading {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 56px);
   font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, min(5.4vw, 10.5vh), 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
   color: var(--ink);
-  font-style: normal;
 }
-.statement em {
+.sx-heading em {
+  font-style: normal;
   color: var(--accent);
-  font-style: normal;
 }
-.head {
-  font-family: var(--font-mono);
-  font-size: clamp(14px, 16px, 22px);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding-bottom: 10px;
+
+/* blue circle centred on a corner, with a larger thin ring */
+.sx-circle,
+.sx-ring {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sx-circle {
+  z-index: 1;
+  width: var(--d);
+  background: var(--accent);
+}
+.sx-ring {
+  z-index: 0;
+  width: calc(var(--d) * 1.5);
+  border: 1px solid var(--ink);
+}
+.sx-bl .sx-circle { left: calc(var(--d) * -0.5); bottom: calc(var(--d) * -0.5); }
+.sx-bl .sx-ring   { left: calc(var(--d) * -0.75); bottom: calc(var(--d) * -0.75); }
+.sx-br .sx-circle { right: calc(var(--d) * -0.5); bottom: calc(var(--d) * -0.5); }
+.sx-br .sx-ring   { right: calc(var(--d) * -0.75); bottom: calc(var(--d) * -0.75); }
+
+/* the circle grows out of its corner when the section scrolls in */
+.sx .sx-circle {
+  transform: scale(0.35);
+  opacity: 0;
+  transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
+}
+.sx .sx-ring {
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, opacity 1s ease 0.2s;
+}
+.sx.show .sx-circle,
+.sx.show .sx-ring {
+  transform: none;
+  opacity: 1;
+}
+
+/* slide-up reveal, staggered with --i */
+.sx-r {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 0.14s);
+}
+.sx-r.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1000px) {
+  .sx { padding-left: 36px; padding-right: 36px; }
+}
+@media (max-width: 800px) {
+  .sx {
+    --d: 170px;
+    min-height: 0;
+    padding: 100px 20px 40px;
+  }
+  .sx-heading { font-size: clamp(36px, 11.5vw, 64px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,107 +1,107 @@
-/* ============================ */
-/* Contact Section Styling       */
-/* ============================ */
+/* Contact: one big line, the email, and a few square buttons */
 
-.contact-section {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 100px 24px 40px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.contact-head h2 {
+.ct-heading {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(48px, 9vw, 120px);
   font-weight: 800;
-  line-height: 0.98;
+  font-size: clamp(44px, min(8vw, 15vh), 132px);
+  line-height: 0.95;
   letter-spacing: -0.045em;
   color: var(--ink);
 }
-.contact-head h2 em { color: var(--accent); font-style: normal; }
+.ct-heading em {
+  font-style: normal;
+  color: var(--accent);
+}
 
-.contact-sub {
+.ct-sub {
   margin: 24px 0 0;
-  max-width: 52ch;
-  font-size: 17px;
+  max-width: 34em;
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.3vw, 18px);
   line-height: 1.55;
-  color: var(--muted);
+  text-transform: uppercase;
+  padding-left: 18px;
+  border-left: 4px solid var(--accent);
 }
 
-.contact-email {
+.ct-mail {
+  margin-top: 32px;
+}
+.ct-email {
   display: inline-block;
-  margin-top: 28px;
-  font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 56px);
-  letter-spacing: -0.02em;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 8px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--line);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   overflow-wrap: anywhere;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition: color 0.2s ease;
 }
-.contact-email:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.ct-email span { color: var(--accent); }
+.ct-email:hover { color: var(--accent); }
 
-/* secondary links */
-.contact-links {
+.ct-links {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 28px;
 }
-
-.contact-btn {
-  display: flex;
+.ct-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 18px;
+  padding: 16px 24px;
   border: 1px solid var(--ink);
-  border-radius: 999px;
-  text-decoration: none;
+  background: var(--bg);
   color: var(--ink);
-  font-size: 15px;
-  font-weight: 500;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.contact-btn:hover {
+.ct-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
 }
-.contact-btn .material-symbols-outlined {
-  font-size: 20px;
-  color: inherit;
+
+.ct-foot {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ct-foot span {
+  position: relative;
+  z-index: 2;
 }
 
-.contact-foot {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  font-size: 14px;
-  color: var(--muted);
+/* ---------- laptops with short screens ---------- */
+@media (min-width: 801px) and (max-height: 900px) {
+  .ct-sub { margin-top: 16px; }
+  .ct-mail { margin-top: 22px; }
+  .ct-links { margin-top: 20px; }
+  .ct-foot { padding-top: 24px; }
 }
 
-/* ============================ */
-/* Responsive adjustments       */
-/* ============================ */
-
-@media (max-width: 768px) {
-  .contact-section { padding: 80px 20px 32px; }
-}
-
-/* Fade-in animation system (used by every section) */
-.fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+/* ---------- phones ---------- */
+@media (max-width: 800px) {
+  .ct-heading { font-size: clamp(42px, 13vw, 76px); }
+  .ct-email { font-size: clamp(20px, 6.4vw, 32px); }
+  .ct-links { flex-direction: column; }
+  .ct-btn { width: 100%; justify-content: space-between; box-sizing: border-box; }
+  .ct-foot { padding-top: 56px; }
 }

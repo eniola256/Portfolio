@@ -1,50 +1,66 @@
 import "./Services.css";
+import Reveal from "./Reveal.jsx";
 import { useFadeInOnScroll } from "./UseFadeInOnScroll.jsx";
 
 const services = [
   {
     n: "01",
+    tag: "Service / 001",
     title: "Business websites",
     text: "Fast, mobile-first sites that explain what you do and make it easy for customers to reach you.",
   },
   {
     n: "02",
+    tag: "Service / 002",
     title: "Online stores",
     text: "Product pages, cart and checkout, with online payments, built so shopping feels simple on any phone.",
   },
   {
     n: "03",
+    tag: "Service / 003",
     title: "Web apps",
     text: "React frontends backed by Node.js, Express and PostgreSQL for ordering, accounts and dashboards.",
   },
 ];
 
 function Services() {
-  const [headRef, headVisible] = useFadeInOnScroll();
-  const [listRef, listVisible] = useFadeInOnScroll();
+  const [sectionRef, shown] = useFadeInOnScroll();
 
   return (
-    <section id="Services" className="section services-section">
-      <div ref={headRef} className={`fade-in ${headVisible ? "show" : ""}`}>
-        <p className="head">What I build</p>
-        <h2 className="statement">
+    <section
+      ref={sectionRef}
+      id="Services"
+      className={`sx sx-br sv${shown ? " show" : ""}`}
+    >
+      <span className="sx-grid" aria-hidden="true" />
+      <span className="sx-ring" aria-hidden="true" />
+      <span className="sx-circle" aria-hidden="true" />
+
+      <div className="sx-body">
+        <Reveal as="p" index={0} className="sx-eyebrow">
+          <i aria-hidden="true" /> What I build / 03
+        </Reveal>
+        <Reveal as="h2" index={1} className="sx-heading sv-heading">
           Sites for businesses that want to <em>look sharp</em> and sell.
-        </h2>
+        </Reveal>
+
+        <ul className="sv-list">
+          {services.map((s, i) => (
+            <Reveal as="li" key={s.n} index={i + 2} className="sv-item">
+              <span className="sv-num">{s.n}</span>
+              <p className="sv-tag">{s.tag}</p>
+              <h3>{s.title}</h3>
+              <p className="sv-text">{s.text}</p>
+            </Reveal>
+          ))}
+        </ul>
+
+        <Reveal index={5} className="sv-cta">
+          <a href="#Contact" className="hero-btn">
+            Start a project <span aria-hidden="true">→</span>
+          </a>
+        </Reveal>
       </div>
-
-      <ul ref={listRef} className={`services-list fade-in ${listVisible ? "show" : ""}`}>
-        {services.map((s) => (
-          <li key={s.n} className="service">
-            <span className="service-num">{s.n}</span>
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
-          </li>
-        ))}
-      </ul>
-
-      <a href="#Contact" className="services-cta">
-        Start a project <span aria-hidden="true">→</span>
-      </a>
     </section>
   );
 }
