@@ -35,7 +35,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="hero-visual fade-up delay-2" aria-hidden="false">
+      <div className="hero-visual fade-up delay-2">
         <span className="hero-band" aria-hidden="true" />
         <span className="hero-circle" aria-hidden="true" />
         <img

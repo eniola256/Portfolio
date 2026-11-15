@@ -53,6 +53,17 @@ function CommandPalette() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // the navbar's dot-grid button asks for the palette through this event
+  useEffect(() => {
+    const onOpen = () => {
+      setQuery("");
+      setIndex(0);
+      setOpen(true);
+    };
+    window.addEventListener("open-command-palette", onOpen);
+    return () => window.removeEventListener("open-command-palette", onOpen);
+  }, []);
+
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);

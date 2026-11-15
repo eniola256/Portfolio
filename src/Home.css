@@ -1,18 +1,16 @@
 /* ============================ */
-/* Hero                          */
+/* Hero: full width, full height */
 /* ============================ */
 
 #home {
   position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   box-sizing: border-box;
-  min-height: calc(100vh - 90px);
-  padding: 40px 24px 96px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  display: flex;
   align-items: center;
-  column-gap: 24px;
+  padding: 120px 56px 110px;      /* top padding clears the floating navbar */
   overflow: hidden;
 }
 
@@ -33,6 +31,7 @@
 .hero-copy {
   position: relative;
   z-index: 2;
+  max-width: 60%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -57,7 +56,8 @@
   flex-direction: column;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(54px, 10.4vw, 150px);
+  /* scales with width, but never taller than the screen can hold */
+  font-size: clamp(54px, min(11.4vw, 22vh), 200px);
   line-height: 0.88;
   letter-spacing: -0.045em;
   text-transform: uppercase;
@@ -81,7 +81,7 @@
   padding-left: 18px;
   border-left: 4px solid var(--accent);
   font-family: var(--font-mono);
-  font-size: clamp(15px, 1.7vw, 22px);
+  font-size: clamp(15px, 1.5vw, 22px);
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -132,42 +132,44 @@
   border-color: var(--accent);
 }
 
-/* ---------- portrait ---------- */
+/* ---------- portrait: pinned to the right edge, full height ---------- */
 .hero-visual {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 46%;
   z-index: 1;
-  align-self: end;
-  aspect-ratio: 491 / 560;
-  width: 100%;
 }
 
-/* grey vertical band behind the photo */
+/* grey vertical band, top to bottom of the screen */
 .hero-band {
   position: absolute;
-  top: -40px;
-  bottom: -96px;
-  right: -24px;
+  top: 0;
+  bottom: 0;
+  right: 0;
   width: 62%;
-  background: rgba(18, 18, 17, 0.1);
+  background: rgba(18, 18, 17, 0.08);
 }
 
 /* blue circle behind the head and shoulder */
 .hero-circle {
   position: absolute;
-  right: -4%;
-  top: 22%;
-  width: 66%;
+  right: 2%;
+  top: 26%;
+  height: 50%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--accent);
 }
 
+/* height follows the screen, so the photo fits any window */
 .hero-photo {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: auto;
+  right: 7%;
+  bottom: 20%;
+  height: 66%;
+  width: auto;
   display: block;
 }
 
@@ -179,8 +181,8 @@
   pointer-events: none;
 }
 .hero-cross {
-  left: 54%;
-  bottom: 30%;
+  left: 53%;
+  bottom: 26%;
   width: 24px;
   height: 24px;
   background:
@@ -188,8 +190,8 @@
     linear-gradient(var(--ink), var(--ink)) center / 100% 1px no-repeat;
 }
 .hero-square {
-  left: 56%;
-  bottom: 14%;
+  left: 55.5%;
+  bottom: 12%;
   width: 14px;
   height: 14px;
   background: var(--ink);
@@ -198,8 +200,8 @@
 .hero-meta {
   position: absolute;
   z-index: 2;
-  left: 24px;
-  bottom: 32px;
+  left: 56px;
+  bottom: 36px;
   margin: 0;
   display: flex;
   gap: 28px;
@@ -224,8 +226,8 @@
 .hero-scroll {
   position: absolute;
   z-index: 2;
-  right: 24px;
-  bottom: 32px;
+  right: 56px;
+  bottom: 36px;
   display: flex;
   align-items: flex-end;
   gap: 12px;
@@ -282,33 +284,40 @@
 /* ============================ */
 
 @media (max-width: 1000px) {
-  #home { column-gap: 8px; }
   .hero-cross, .hero-square { display: none; }
+  .hero-copy { max-width: 56%; }
 }
 
 /* phones and small tablets: one column, photo between name and tagline */
 @media (max-width: 800px) {
   #home {
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 28px;
-    padding: 32px 20px 88px;
-    align-items: start;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 28px;
+    padding: 104px 20px 96px;
   }
   .hero-copy { display: contents; }
 
-  .hero-label   { order: 1; justify-self: start; }
+  .hero-label   { order: 1; align-self: flex-start; }
   .hero-name    { order: 2; font-size: clamp(48px, 15.5vw, 120px); }
-  .hero-visual  { order: 3; max-width: 420px; justify-self: start; }
+  .hero-visual  {
+    order: 3;
+    position: relative;
+    top: auto; right: auto; bottom: auto;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 491 / 520;
+    flex: none;
+  }
   .hero-tagline { order: 4; }
   .hero-actions { order: 5; }
 
-  .hero-band { right: -20px; top: -20px; bottom: 0; }
+  .hero-band   { right: -20px; top: -20px; width: 62%; }
+  .hero-circle { right: 0; top: 20%; height: 62%; }
+  .hero-photo  { right: 0; bottom: 0; height: 100%; }
 
-  .hero-meta {
-    left: 20px;
-    bottom: 28px;
-  }
+  .hero-meta   { left: 20px; bottom: 28px; }
   .hero-scroll { right: 20px; bottom: 28px; }
 }
 
