@@ -38,8 +38,8 @@ function AboutRow({ item, index, open, onToggle }) {
   return (
     <article
       ref={ref}
-      className={`abt-row fade-in${isVisible ? " show" : ""}${open ? " open" : ""}`}
-      style={{ transitionDelay: isVisible ? `${index * 0.12}s` : "0s" }}
+      className={`abt-row reveal${isVisible ? " show" : ""}${open ? " open" : ""}`}
+      style={{ "--i": index }}
     >
       <div className="abt-row-head">
         <span className="abt-num">{item.n}</span>
@@ -75,10 +75,16 @@ function AboutRow({ item, index, open, onToggle }) {
 
 function About() {
   const [open, setOpen] = useState(null);
+  const [sectionRef, sectionVisible] = useFadeInOnScroll();
   const [copyRef, copyVisible] = useFadeInOnScroll();
+  const [listRef, listVisible] = useFadeInOnScroll();
 
   return (
-    <section id="About" className="section">
+    <section
+      ref={sectionRef}
+      id="About"
+      className={`section${sectionVisible ? " show" : ""}`}
+    >
       {/* decoration */}
       <span className="abt-grid" aria-hidden="true" />
       <span className="abt-vline" aria-hidden="true" />
@@ -91,18 +97,20 @@ function About() {
         <span className="abt-ring" aria-hidden="true" />
         <span className="abt-circle" aria-hidden="true" />
 
-        <div ref={copyRef} className={`abt-copy fade-in${copyVisible ? " show" : ""}`}>
-          <p className="abt-eyebrow">
+        <div ref={copyRef} className={`abt-copy${copyVisible ? " show" : ""}`}>
+          <p className="abt-eyebrow" style={{ "--i": 0 }}>
             <i aria-hidden="true" /> About me / 01
           </p>
-          <h2 className="abt-heading">
+          <h2 className="abt-heading" style={{ "--i": 1 }}>
             More than just a <em>frontend</em> developer.
           </h2>
-          <p className="abt-tagline">I build digital solutions that solve real problems.</p>
+          <p className="abt-tagline" style={{ "--i": 2 }}>
+            I build digital solutions that solve real problems.
+          </p>
         </div>
       </div>
 
-      <div className="abt-list">
+      <div ref={listRef} className={`abt-list${listVisible ? " show" : ""}`}>
         {items.map((item, i) => (
           <AboutRow
             key={item.n}

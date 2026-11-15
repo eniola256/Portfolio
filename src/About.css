@@ -34,7 +34,7 @@
 .abt-vline {
   position: absolute;
   left: 28px;
-  top: 26%;
+  top: 110px;
   bottom: 0;
   width: 1px;
   background: var(--ink);
@@ -48,7 +48,7 @@
 }
 .abt-sq-blue-left {
   left: 22px;
-  top: 52%;
+  top: 36%;
   width: 13px;
   height: 13px;
   background: var(--accent);
@@ -104,13 +104,101 @@
   border: 1px solid var(--ink);
 }
 
-/* ---------- left: heading ---------- */
+/* ---------- left: heading (sits at the top) ---------- */
 .abt-left {
   position: static;                 /* circle + ring anchor to the section's corner */
+  align-self: start;
 }
 .abt-copy {
   position: relative;
   z-index: 2;
+}
+
+/* ============================ */
+/* Scroll-in animation           */
+/* ============================ */
+
+/* heading block: each piece slides up in turn */
+.abt-copy > * {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 0.14s);
+}
+.abt-copy.show > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* rows: rise one after another */
+.abt-row.reveal {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.25s + var(--i, 0) * 0.16s);
+}
+.abt-row.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* the long vertical line draws top to bottom, like the old curve did */
+.abt-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
+}
+.abt-list.show::before {
+  transform: scaleY(1);
+}
+
+/* decoration: circle grows from the corner, rings and lines fade/draw in */
+.abt-circle {
+  transform: scale(0.35);
+  opacity: 0;
+  transition:
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+}
+.abt-ring {
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    opacity 1s ease 0.2s;
+}
+.abt-vline {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+}
+.abt-sq,
+.abt-ring2 {
+  opacity: 0;
+  transition: opacity 0.9s ease 0.8s;
+}
+#About.show .abt-circle,
+#About.show .abt-ring {
+  transform: none;
+  opacity: 1;
+}
+#About.show .abt-vline {
+  transform: scaleY(1);
+}
+#About.show .abt-sq,
+#About.show .abt-ring2 {
+  opacity: 1;
 }
 
 .abt-eyebrow {
@@ -166,7 +254,6 @@
 .abt-list {
   position: relative;
   z-index: 2;
-  border-left: 1px solid var(--ink);
 }
 
 .abt-row {
@@ -301,6 +388,7 @@
 
   .abt-left {
     position: relative;              /* circle + ring anchor to this block instead */
+    align-self: stretch;
     padding: 0 20px 120px;           /* room for the circle above the rows */
   }
   .abt-eyebrow { margin-bottom: 24px; }
@@ -320,8 +408,8 @@
   }
 
   /* rows cover the lower half of the circle */
+  .abt-list::before { display: none; }
   .abt-list {
-    border-left: none;
     padding: 0;
     background: var(--bg);
     border-top: 1px solid var(--line);
